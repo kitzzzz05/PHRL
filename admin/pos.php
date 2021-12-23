@@ -40,8 +40,9 @@ if (isset($_POST['submit'])) {
 					<div class="col-lg-12">
 						<h1 class="page-header">POS
 							<span class="pull-right">
-
+								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule"><i class="fa fa-plus-circle"></i>Search Item</button>
 							</span>
+						</h1>
 						</h1>
 						<div class="col-lg-12 main-chart">
 							<br>
@@ -136,8 +137,8 @@ if (isset($_POST['submit'])) {
 										<td><input type="text" class="form-control" id="change_pay" readonly></td>
 										<td></td>
 										<td>
-											<a  onclick="getUrl(<?php echo $total?>)">
-											<button class="btn btn-default" id ="print" disabled>
+											<a onclick="getUrl(<?php echo $total ?>)">
+												<button class="btn btn-default" id="print" disabled>
 													<i class="fa fa-print"></i> Print
 												</button></a>
 										</td>
@@ -152,16 +153,15 @@ if (isset($_POST['submit'])) {
 
 
 			</div>
-		    <script type="text/javascript">
-				
+			<script type="text/javascript">
 				function getUrl(id) {
-					
-                        var text1 = document.getElementById("change_pay");
-                        var text2 = document.getElementById("amount_pay");
-                        var price = parseFloat(text1.value);
-                        var quant = parseFloat(text2.value);
-                        window.open('full_details.php?id=' + id + '&prodid='+ quant+'&price=' + price + '', '_blank');
-                    }
+
+					var text1 = document.getElementById("change_pay");
+					var text2 = document.getElementById("amount_pay");
+					var price = parseFloat(text1.value);
+					var quant = parseFloat(text2.value);
+					window.open('full_details.php?id=' + id + '&prodid=' + quant + '&price=' + price + '', '_blank');
+				}
 
 				var text1 = document.getElementById("total_pay");
 				var text2 = document.getElementById("amount_pay");
@@ -185,6 +185,7 @@ if (isset($_POST['submit'])) {
 
 			<?php include('script.php'); ?>
 			<script src="custom.js"></script>
+			<?php include('add_modal_search.php'); ?>
 </body>
 
 </html>
