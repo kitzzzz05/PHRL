@@ -1,75 +1,53 @@
-<?php
-    $database = 'pos';
-    $charset = "utf8mb4"; # utf8mb4_unicode_ci 
-    $conn = mysqli_connect("localhost","root","",$database);
+<body>
+    <div id="wrapper">
+        <?php include('navbar.php'); ?>
+        <div style="height:50px;"></div>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Create DB Backup
+                            <span class="pull-right">
 
-    $conn->set_charset($charset);
+                            </span>
+                        </h1>
+                        <form class="form-horizontal" method="post" action="backup.php">
 
-    # get all tables
-    $result = mysqli_query($conn, "SHOW TABLES");
-    $tables = array();
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="product_id">Admin Password:</label>
+                                <div class="col-sm-3">
+                                    <input type="password" name="pswd" id="pswd" oninput="verifyPassword()" class="form-control">
+                                    <span id="message" style="color:red"> </span></br>
+                                    <button type="submit" id="submit" class="btn btn-default" disabled>Submit</button>
+                                  
+                                 
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
 
-    while ($row = mysqli_fetch_row($result)) {
-        $tables[] = $row[0];
-    }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function verifyPassword() {
 
-    # Get tables data 
-    $sqlScript = "";
-    foreach ($tables as $table) {
-        $query = "SHOW CREATE TABLE $table";
-        $result = mysqli_query($conn, $query);
-        $row = mysqli_fetch_row($result);
-        
-        $sqlScript .= "\n\n" . $row[1] . ";\n\n";
-        
-        
-        $query = "SELECT * FROM $table";
-        $result = mysqli_query($conn, $query);
-        
-        $columnCount = mysqli_num_fields($result);
-        
-        for ($i = 0; $i < $columnCount; $i ++) {
-            while ($row = mysqli_fetch_row($result)) {
-                $sqlScript .= "INSERT INTO $table VALUES(";
-                for ($j = 0; $j < $columnCount; $j ++) {
-                    $row[$j] = $row[$j];
+                var pw = document.getElementById("pswd").value;
+                var pass = "admin"
+                
+                if (pw == pass) {
+                    document.getElementById("submit").disabled = false;
+                    document.getElementById("message").innerHTML = "";
+                } else {
                     
-                    $sqlScript .= (isset($row[$j])) ? '"' . $row[$j] . '"' : '""';
+                    document.getElementById("message").innerHTML = "**Wrong Password";
+                    return false;
 
-                    if ($j < ($columnCount - 1)) {
-                        $sqlScript .= ',';
-                    }
 
                 }
-                $sqlScript .= ");\n";
             }
-        }
-        
-        $sqlScript .= "\n"; 
-    }
-
-    if(!empty($sqlScript))
-    {
-        // Save the SQL script to a backup file
-        $backup_file_name = $database . '_backup_' . time() . '.sql';
-        $fileHandler = fopen($backup_file_name, 'w+');
-        $number_of_lines = fwrite($fileHandler, $sqlScript);
-        fclose($fileHandler); 
-    
-        // Download the SQL backup file to the browser
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename=' . basename($backup_file_name));
-        header('Content-Transfer-Encoding: binary');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($backup_file_name));
-        ob_clean();
-        flush();
-        readfile($backup_file_name);
-        exec('rm ' . $backup_file_name); 
-    }
-    header('location:user.php');
- 
-?>
+        </script>
+        <?php include('script.php'); ?>
