@@ -111,6 +111,9 @@
                                         <li>
                                             <a href="user.php"></i> User</a>
                                         </li>
+                                        <li>
+                                            <a href="database.php"></i> Database Backup</a>
+                                        </li>
                                         
                                 </li>
                                 <li>
