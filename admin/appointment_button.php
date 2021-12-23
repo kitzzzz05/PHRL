@@ -70,23 +70,21 @@
                             <span style="width:120px;" class="input-group-addon">End Time:</span>
                             <input type="time" style="width:400px; " class="form-control" value ="<?php echo $b['endTime'] ?>" name="end">
                         </div>
-						
-				           
-
-
 						<div style="height:10px;"></div>
 						<div class="form-group input-group">
                             <span class="input-group-addon" style="width:120px;">Services:</span>
                             <select style="width:400px;" class="form-control" name="services">
-								<option value="<?php echo $b['services']?>"><?php echo $b['services']?></option>
-                                <option value="FORK INSTALLATION">FORK INSTALLATION</option>
-                                                    <option value="FORK CUTTING">FORK CUTTING</option>
-                                                    <option value="HEADSET CLEARING">HEADSET CLEARING</option>
-                                                    <option value="HANDLEBAR / STEM INSTALLATION">HANDLEBAR / STEM INSTALLATION</option>
-                                                    <option value="CHANGE GROUPSET">CHANGE GROUPSET</option>
-                                                    <option value="CHANGE HUB">CHANGE HUB</option>
-	
-							</select>
+                            <option value="<?php echo $b['services']; ?>"><?php echo $b['services']; ?></option>
+                                    <?php
+                                    $sup = mysqli_query($conn, "select * from services");
+                                    while ($suprow = mysqli_fetch_array($sup)) {
+                                    ?>
+                                        <option value="<?php echo $suprow['services']; ?>"><?php echo $suprow['services']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            
                         </div>
 					
                 <div style="height:10px;"></div>

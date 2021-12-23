@@ -113,6 +113,12 @@
                                         </li>
                                         
                                 </li>
+                                <li>
+                                        <li>
+                                            <a href="services.php"></i> Services</a>
+                                        </li>
+                                        
+                                </li>
                                
                             </ul>
                         </li>

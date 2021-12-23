@@ -62,13 +62,14 @@ $pq=mysqli_query($conn,"SELECT customer_name from customer");
 					<div class="col-sm-10">
 					  <!-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> -->
 					  <select class="form-control" name="title" id="title">
-                                <option value="FORK INSTALLATION">FORK INSTALLATION</option>
-                                                    <option value="FORK CUTTING">FORK CUTTING</option>
-                                                    <option value="HEADSET CLEARING">HEADSET CLEARING</option>
-                                                    <option value="HANDLEBAR / STEM INSTALLATION">HANDLEBAR / STEM INSTALLATION</option>
-                                                    <option value="CHANGE GROUPSET">CHANGE GROUPSET</option>
-                                                    <option value="CHANGE HUB">CHANGE HUB</option>
-	
+					  <?php
+                                    $sup = mysqli_query($conn, "select * from services");
+                                    while ($suprow = mysqli_fetch_array($sup)) {
+                                    ?>
+                                        <option value="<?php echo $suprow['services']; ?>"><?php echo $suprow['services']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
 							</select>
 					</div>
 					</div>
@@ -137,12 +138,14 @@ $pq=mysqli_query($conn,"SELECT customer_name from customer");
 					  <!-- <input type="text" name="title" class="form-control" id="title" placeholder="Title"> -->
 					  <select class="form-control" name="title" id="title">
 								<option value="<?php echo $b['services']?>"><?php echo $b['services']?></option>
-                                <option value="FORK INSTALLATION">FORK INSTALLATION</option>
-                                                    <option value="FORK CUTTING">FORK CUTTING</option>
-                                                    <option value="HEADSET CLEARING">HEADSET CLEARING</option>
-                                                    <option value="HANDLEBAR / STEM INSTALLATION">HANDLEBAR / STEM INSTALLATION</option>
-                                                    <option value="CHANGE GROUPSET">CHANGE GROUPSET</option>
-                                                    <option value="CHANGE HUB">CHANGE HUB</option>
+								<?php
+                                    $sup = mysqli_query($conn, "select * from services");
+                                    while ($suprow = mysqli_fetch_array($sup)) {
+                                    ?>
+                                        <option value="<?php echo $suprow['services']; ?>"><?php echo $suprow['services']; ?></option>
+                                    <?php
+                                    }
+                                    ?>
 	
 							</select>
 					</div>
@@ -216,7 +219,7 @@ $pq=mysqli_query($conn,"SELECT customer_name from customer");
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
  
 <div class="modal fade" id="addproduct" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
     <div class="modal-content">
