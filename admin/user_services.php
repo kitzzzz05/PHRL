@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <?php
-                    $a = mysqli_query($conn, "select * from services where services='" . $cqrow['services'] . "'");
+                    $a = mysqli_query($conn, "select * from services where product_name='" . $cqrow['product_name'] . "'");
                     $b = mysqli_fetch_array($a);
                     ?>
                     <h5>
@@ -50,7 +50,7 @@
                     <form role="form" method="POST" action="editservices.php<?php echo '?id=' . $cqrow['id']; ?>" enctype="multipart/form-data">
                         <div class="form-group input-group">
                             <span class="input-group-addon" style="width:120px;">Service Name:</span>
-                            <input type="text" style="width:400px; text-transform:capitalize;" value="<?php echo ucwords($b['services']); ?>" class="form-control" name="name">
+                            <input type="text" style="width:400px; text-transform:capitalize;" value="<?php echo ucwords($b['product_name']); ?>" class="form-control" name="name">
                         </div>
 
                         <div style="height:10px;"></div>

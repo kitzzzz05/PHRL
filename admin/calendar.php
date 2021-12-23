@@ -66,7 +66,7 @@ $pq=mysqli_query($conn,"SELECT customer_name from customer");
                                     $sup = mysqli_query($conn, "select * from services");
                                     while ($suprow = mysqli_fetch_array($sup)) {
                                     ?>
-                                        <option value="<?php echo $suprow['services']; ?>"><?php echo $suprow['services']; ?></option>
+                                        <option value="<?php echo $suprow['product_name']; ?>"><?php echo $suprow['product_name']; ?></option>
                                     <?php
                                     }
                                     ?>
@@ -142,7 +142,7 @@ $pq=mysqli_query($conn,"SELECT customer_name from customer");
                                     $sup = mysqli_query($conn, "select * from services");
                                     while ($suprow = mysqli_fetch_array($sup)) {
                                     ?>
-                                        <option value="<?php echo $suprow['services']; ?>"><?php echo $suprow['services']; ?></option>
+                                        <option value="<?php echo $suprow['product_name']; ?>"><?php echo $suprow['product_name']; ?></option>
                                     <?php
                                     }
                                     ?>

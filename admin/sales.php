@@ -41,6 +41,7 @@
 									<th>Customer</th>
 									<th>Product Name</th>
 									<th>Sales Type</th>
+									<th>Status</th>
 									<th>Total Purchase</th>
 								</tr>
 							</thead>
@@ -75,7 +76,7 @@
 								
 								}
 								else{
-								$sq = mysqli_query($conn, "SELECT * FROM sales  WHERE DATE(sales_date) BETWEEN '$from' AND '$to' ORDER by sales_date asc");
+								$sq = mysqli_query($conn, "SELECT * FROM sales  ORDER by sales_date asc");
 								while ($sqrow = mysqli_fetch_array($sq)) {
 								?>
 									<tr>
@@ -89,14 +90,18 @@
 										<td>
 											<?php echo $sqrow['sales_type']; ?>
 										</td>
+										<td>
+											<?php echo $sqrow['status']; ?>
+										</td>
 										<td align="right"><?php echo number_format($sqrow['sales_total'], 2); 
 										$total += $sqrow['sales_total'];?></td>
+										
 									</tr>
 								<?php
 								}
 								?>
 								<tr>
-											<td colspan="4"><strong>Grand Total</strong></span></td>
+											<td colspan="5"><strong>Grand Total</strong></span></td>
 											<td><strong><span class="pull-right"><?php  echo number_format($total, 2) ?></span><strong></td>
 										</tr>
 

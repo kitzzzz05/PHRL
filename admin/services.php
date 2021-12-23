@@ -27,12 +27,12 @@
                 </thead>
                 <tbody>
 				<?php
-					$cq=mysqli_query($conn,"SELECT * from services ");
+					$cq=mysqli_query($conn,"SELECT * from services");
 					while($cqrow=mysqli_fetch_array($cq)){
 					?>
 						<tr>
 							
-							<td><?php echo $cqrow['services']; ?></td>
+							<td><?php echo $cqrow['product_name']; ?></td>
                             <td><?php  echo number_format($cqrow['price'], 2); ?></td>
 							<td>
 								<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_<?php echo $cqrow['id']; ?>"><i class="fa fa-edit"></i> Edit</button>

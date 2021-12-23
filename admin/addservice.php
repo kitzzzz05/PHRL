@@ -4,7 +4,7 @@
 	$name=$_POST['name'];
 	$price=$_POST['price'];
 	
-	mysqli_query($conn,"insert into services (services, price) values ( '$name', '$price')");
+	mysqli_query($conn,"insert into services (product_name, price) values ( '$name', '$price')");
 	
 	?>
 		<script>

@@ -7,7 +7,7 @@
 	$price=$_POST['price'];
 	
 	
-	mysqli_query($conn,"update services set services='$name', price='$price' where id='$id'");
+	mysqli_query($conn,"update services set product_name='$name', price='$price' where id='$id'");
 	
 	?>
 		<script>

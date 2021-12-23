@@ -77,9 +77,10 @@ if (isset($_POST['submit'])) {
 					</div>
 					<div class="row">
 						<div class="col-lg-12">
-							<table style="width:100%" class="table">
+							<table style="width:85%" class="table">
 								<thead>
 									<th></th>
+									<th>Order Id</th>	
 									<th>Product Name</th>
 									<th>Product Price</th>
 									<th>Purchase Qty</th>
@@ -95,6 +96,7 @@ if (isset($_POST['submit'])) {
 										<tr>
 											<td><a class="btn btn-info btn-sm" href="del_product.php?id=<?php echo $row['id']; ?>">
 													<span class="glyphicon glyphicon-trash"></span> Remove </a></td>
+													<td><?php echo $row['id']; ?></td>
 											<td><?php echo $row['product_name']; ?></td>
 											<td><?php echo number_format($row['product_price'], 2); ?></td>
 											<td><a class="btn btn-warning btn-sm minus_qty2" href="minus_product.php?id=<?php echo $row['id']; ?>"><i class="fa fa-minus fa-fw"></i></a>
@@ -112,7 +114,7 @@ if (isset($_POST['submit'])) {
 									}
 									?>
 									<tr>
-										<td colspan="4"><span class="pull-right"><strong>Grand Total</strong></span></td>
+										<td colspan="5"><span class="pull-right"><strong>Grand Total</strong></span></td>
 										<td><strong><span id="total"><?php echo number_format($total, 2); ?></span><strong></td>
 									</tr>
 
