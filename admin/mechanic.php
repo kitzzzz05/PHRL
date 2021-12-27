@@ -36,19 +36,24 @@
 						$pid=$cqrow['scheduleId']
 					?>
 						<tr>
-							<td><?php echo $cqrow['scheduleId']; ?></td>
-							<td><?php echo $cqrow['scheduleDate']; ?></td>
-							<td><?php echo $cqrow['scheduleDay']; ?></td>
-							<td><?php echo $cqrow['startTime']; ?></td>
-                            <td><?php echo $cqrow['endTime']; ?></td>
-							<td><?php echo $cqrow['bookAvail']; ?></td>
-							<td>
+							<td><center><?php echo $cqrow['scheduleId']; ?></center></td>
+							<td><center><?php echo $cqrow['scheduleDate']; ?></center></td>
+							<td><center><?php echo $cqrow['scheduleDay']; ?></center></td>
+							<td><center><?php echo $cqrow['startTime']; ?></center></td>
+                            <td><center><?php echo $cqrow['endTime']; ?></center></td>
+							<td><center> <?php if( $cqrow['bookAvail'] == 'Avail'){ ?>
+                            <span class='badge badge-pill' style='background:blue'><?php echo $cqrow['bookAvail']; ?></span></center></td>
+                         <?php   }
+                         else{ ?>
+                            <span class='badge badge-pill' style='background:red'><?php echo $cqrow['bookAvail'] ?></span></center></td>
+                    <?php     }?>
+							<td><center>
 								<?php if($cqrow['bookAvail'] === 'Avail') {?>
 								<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editsched_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Edit</button>
 								<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delsched_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
 								<?php include('schedule_button.php'); ?>
 								<?php } ?>
-							</td>
+								</center></td>
 						</tr>
 					<?php
 					}

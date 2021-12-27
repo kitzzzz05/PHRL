@@ -46,17 +46,18 @@
 
 					?>
 						 <tr>
-                         <td><?php echo $pqrow['appId']; ?></td>
-							<td><?php echo $pqrow['customer_name']; ?></td>
-							<td><?php echo $pqrow['services']; ?></td>
-							<td><?php echo $pqrow['scheduleDay']; ?></td>
-							<td><?php echo $pqrow['scheduleDate']; ?></td>
-							<td><?php echo $pqrow['startTime']; ?></td>
-							<td><?php echo $pqrow['endTime']; ?></td>
-                            <td><img src="../<?php if(empty($pqrow['payment'])){echo "upload/noimage.jpg";}else{echo $pqrow['payment'];} ?>" height="30px" width="30px;"></td>
+                         <td><center> <?php echo $pqrow['appId']; ?></center> </td>
+							<td><center> <?php echo $pqrow['customer_name']; ?></center></td>
+							<td><center> <?php echo $pqrow['services']; ?></center></td>
+							<td><center> <?php echo $pqrow['scheduleDay']; ?></center> </td>
+							<td><center> <?php echo $pqrow['scheduleDate']; ?></center> </td>
+							<td><center> <?php echo $pqrow['startTime']; ?></center> </td>
+							<td><center> <?php echo $pqrow['endTime']; ?></center> </td>
+                            <td><center> <img src="../<?php if(empty($pqrow['payment'])){echo "upload/noimage.jpg";}else{echo $pqrow['payment'];} ?>" height="30px" width="30px;"></td>
 						
-                            <td><?php echo $pqrow['status']; ?></td>
-							<td>
+                            <td><center> <span class='badge badge-pill' style='background:gray'><?php 
+                            echo $pqrow['status']; ?></span></center></td>
+							<td><center>
                                 <?php if ($pqrow['status']==='Processing' ||$pqrow['status']==='Pending for Approval' ) {?>
 								<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editappontment_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Edit</button>
 								<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delappointment_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
@@ -68,7 +69,7 @@
 								<?php include('appointment_button.php'); ?>
 
                               <?php }?>
-							</td>
+							</td> </center>
 						</tr>
 					<?php
 					}

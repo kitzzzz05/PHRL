@@ -15,12 +15,12 @@ while ($row = mysqli_fetch_array($query)) {
     values ('$id','$prodId','$total', '$quant',NOW(), '$suppId')");
 
     //UPDATE PRODUCT QUANTITY
-    mysqli_query($conn, "UPDATE product set product_qty= product_qty+$quant where productid='$prodId'");
+//     mysqli_query($conn, "UPDATE product set product_qty= product_qty+$quant where productid='$prodId'"); move to order data
 
     //DELETE FROM DUMMY CART
     mysqli_query($conn, "DELETE from purchase WHERE purcase_id = '$id'");
 
-    mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date) 
+    mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
          values ('" . $_SESSION['id'] . "','Update Stock', '$prodId', '$quant', NOW())");
 }
 header('location:purchase_order.php');

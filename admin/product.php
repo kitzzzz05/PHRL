@@ -40,22 +40,22 @@
 								?>
 									<tr>
 									<td><center><?php echo $pid; ?></center></td>
-										<td><?php echo $pqrow['product_name']; ?></td>
-										<td><?php echo $pqrow['company_name']; ?></td>
-										<td><?php echo $pqrow['price']; ?></td>
-										<td><?php echo $pqrow['product_price']; ?></td>
-										<td><?php echo $pqrow['product_qty']; ?></td>
-										<td><?php echo $pqrow['about']; ?></td>
-										<td><img src="../<?php if (empty($pqrow['photo'])) {
+										<td><center><?php echo $pqrow['product_name']; ?></center></td>
+										<td><center><?php echo $pqrow['company_name']; ?></center></td>
+										<td><center><?php echo number_format($pqrow['price'], 2) ?></center></td>
+										<td><center><?php echo  number_format($pqrow['product_price'], 2) ?></center></td>
+										<td><center><?php echo $pqrow['product_qty']; ?></center></td>
+										<td><center><?php echo $pqrow['about']; ?></center></td>
+										<td><center><img src="../<?php if (empty($pqrow['photo'])) {
 																echo "upload/noimage.jpg";
 															} else {
 																echo $pqrow['photo'];
-															} ?>" height="30px" width="30px;"></td>
-										<td>
+															} ?>" height="30px" width="30px;"></center></td>
+										<td><center>
 											<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editprod_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Edit</button>
 											<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delproduct_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
 											<?php include('product_button.php'); ?>
-										</td>
+														</center></td>
 									</tr>
 								<?php
 								}

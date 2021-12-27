@@ -1,1 +1,0 @@
-CREATE TABLE `pos`.`return_trans` ( `return_id` INT(11) NOT NULL AUTO_INCREMENT , `purchase_id` INT(11) NOT NULL , `quantity` DOUBLE NOT NULL , `remarks` VARCHAR(100) NOT NULL , `photo` VARCHAR(200) NOT NULL , `return_type` TINYINT(4) NOT NULL DEFAULT '0' , `created` TIMESTAMP NOT NULL , PRIMARY KEY (`return_id`)) ENGINE = InnoDB;

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 18, 2017 at 10:51 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Dec 27, 2021 at 02:28 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,15 +24,71 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Table structure for table `adminschedule`
 --
 
-CREATE TABLE `cart` (
-  `cartid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
+CREATE TABLE `adminschedule` (
+  `scheduleId` int(10) NOT NULL,
+  `scheduleDate` date NOT NULL,
+  `scheduleDay` varchar(250) NOT NULL,
+  `startTime` time NOT NULL,
+  `endTime` time NOT NULL,
+  `bookAvail` char(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `adminschedule`
+--
+
+INSERT INTO `adminschedule` (`scheduleId`, `scheduleDate`, `scheduleDay`, `startTime`, `endTime`, `bookAvail`) VALUES
+(61, '2021-12-22', 'Wednesday', '08:30:00', '11:30:00', 'notAvail'),
+(62, '2021-12-30', 'Thursday', '11:11:00', '12:12:00', 'notavail'),
+(63, '2021-12-23', 'Thursday', '09:00:00', '13:00:00', 'notAvail'),
+(64, '0001-11-11', 'Sunday', '11:11:00', '11:11:00', 'Avail');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `appId` int(10) NOT NULL,
+  `userIc` int(10) NOT NULL,
+  `scheduleId` int(10) NOT NULL,
+  `services` varchar(250) NOT NULL,
+  `appComment` varchar(250) NOT NULL,
+  `status` varchar(250) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `color` varchar(200) NOT NULL,
+  `payment` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`appId`, `userIc`, `scheduleId`, `services`, `appComment`, `status`, `start`, `end`, `color`, `payment`) VALUES
+(54, 17, 61, 'HEADSET CLEARING', '', 'Processing', '2021-12-22 08:30:00', '2021-12-22 11:30:00', '#0071c5', ''),
+(55, 17, 62, 'DarienKim', 'tete', 'Pending for Approval', '2021-12-30 11:11:00', '2021-12-30 12:12:00', '', 'upload/prof disc_1640059218.jpg'),
+(56, 17, 63, 'Janley Services', '', 'Done', '2021-12-23 09:00:00', '2021-12-23 13:00:00', '#FF8C00', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_final`
+--
+
+CREATE TABLE `cart_final` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
   `productid` int(11) NOT NULL,
-  `qty` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `quantity` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `date` date NOT NULL,
+  `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -44,15 +101,6 @@ CREATE TABLE `category` (
   `category_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`categoryid`, `category_name`) VALUES
-(1, 'Laptops'),
-(2, 'Desktop PC''s'),
-(3, 'Tablets');
-
 -- --------------------------------------------------------
 
 --
@@ -63,15 +111,26 @@ CREATE TABLE `customer` (
   `userid` int(11) NOT NULL,
   `customer_name` varchar(50) NOT NULL,
   `address` varchar(150) NOT NULL,
-  `contact` varchar(50) NOT NULL
+  `contact` varchar(50) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `dob` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `customer`
+-- Table structure for table `dummy_cart`
 --
 
-INSERT INTO `customer` (`userid`, `customer_name`, `address`, `contact`) VALUES
-(2, 'Neovic Devierte', 'Silay City, Negros Occidental', '09092735719');
+CREATE TABLE `dummy_cart` (
+  `id` int(11) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `product_name` varchar(250) NOT NULL,
+  `product_price` int(10) NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `barcode_id` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -88,22 +147,6 @@ CREATE TABLE `inventory` (
   `inventory_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`inventoryid`, `userid`, `action`, `productid`, `quantity`, `inventory_date`) VALUES
-(1, 2, 'Purchase', 4, 10, '2017-09-18 09:32:01'),
-(2, 2, 'Purchase', 20, 10, '2017-09-18 09:32:01'),
-(3, 2, 'Purchase', 1, 99, '2017-09-18 09:32:01'),
-(4, 2, 'Purchase', 2, 20, '2017-09-18 09:32:01'),
-(5, 2, 'Purchase', 2, 10, '2017-09-18 09:34:29'),
-(6, 2, 'Purchase', 2, 10, '2017-09-18 11:09:21'),
-(7, 2, 'Purchase', 3, 12, '2017-09-18 11:09:22'),
-(8, 2, 'Purchase', 4, 8, '2017-09-18 11:09:22'),
-(9, 1, 'Add Product', 27, 10, '2017-09-18 13:59:25'),
-(10, 1, 'Update quantity', 27, 20, '2017-09-18 14:04:32');
-
 -- --------------------------------------------------------
 
 --
@@ -113,39 +156,64 @@ INSERT INTO `inventory` (`inventoryid`, `userid`, `action`, `productid`, `quanti
 CREATE TABLE `product` (
   `productid` int(11) NOT NULL,
   `categoryid` int(11) NOT NULL,
+  `barcode_id` varchar(25) NOT NULL,
   `product_name` varchar(150) NOT NULL,
   `product_price` double NOT NULL,
+  `price` int(10) NOT NULL,
   `product_qty` double NOT NULL,
   `photo` varchar(200) NOT NULL,
-  `supplierid` int(11) NOT NULL
+  `supplierid` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `about` varchar(250) NOT NULL,
+  `damage_qty` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `product`
+-- Table structure for table `purchase`
 --
 
-INSERT INTO `product` (`productid`, `categoryid`, `product_name`, `product_price`, `product_qty`, `photo`, `supplierid`) VALUES
-(1, 1, 'DELL Inspiron 15 7000 15.6', 899, 891, 'upload/1.jpg', 4),
-(2, 1, 'MICROSOFT Surface Pro 4 & Typecover - 128 GB\r\n', 799, 948, 'upload/2.jpg', 0),
-(3, 2, 'DELL Inspiron 15 5000 15.6', 599, 977, 'upload/3.jpg', 4),
-(4, 1, 'LENOVO Ideapad 320s-14IKB 14" Laptop - Grey', 399, 982, 'upload/4.jpg', 0),
-(5, 1, 'APPLE MacBook Air 13.3" (2017)', 879, 9900, 'upload/5.jpg', 0),
-(6, 1, 'DELL Inspiron 15 5000 15', 449.99, 1000, 'upload/6.jpg', 4),
-(8, 1, 'ASUS Transformer Mini T102HA 10.1" 2 in 1 - Silver', 549.99, 1000, 'upload/8.jpg', 0),
-(9, 2, 'PC SPECIALIST Vortex Core Lite Gaming PC', 599.99, 1000, 'upload/9.jpg', 0),
-(10, 2, 'DELL Inspiron 5675 Gaming PC - Recon Blue', 599.99, 1000, 'upload/10.jpg', 4),
-(11, 2, 'HP Barebones OMEN X 900-099nn Gaming PC', 489.98, 1000, 'upload/11.jpg', 0),
-(12, 2, 'ACER Aspire GX-781 Gaming PC', 749.99, 1000, 'upload/12.jpg', 0),
-(13, 2, 'HP Pavilion Power 580-015na Gaming PC', 799.99, 1000, 'upload/13.jpg', 0),
-(14, 2, 'LENOVO Legion Y520 Gaming PC', 899.99, 1000, 'upload/14.jpg', 0),
-(15, 2, 'PC SPECIALIST Vortex Minerva XT-R Gaming PC', 999.99, 1000, 'upload/15.jpg', 0),
-(16, 2, 'C SPECIALIST Vortex Core II Gaming PC', 649.99, 1000, 'upload/16.jpg', 0),
-(17, 3, 'AMAZON Fire 7 Tablet with Alexa (2017) - 8 GB, Black', 49.99, 1000, 'upload/17.jpg', 0),
-(18, 3, 'AMAZON Fire HD 8 Tablet with Alexa (2017) - 16 GB, Black', 79.99, 1000, 'upload/18.jpg', 0),
-(19, 3, 'AMAZON Fire HD 8 Tablet with Alexa (2017) - 32 GB, Black', 99.99, 1000, 'upload/19.jpg', 0),
-(20, 3, 'APPLE 9.7" iPad - 32 GB, Space Grey', 339, 990, 'upload/20.jpg', 0),
-(21, 3, 'APPLE 9.7" iPad - 32 GB, Gold', 339, 1000, 'upload/21.jpg', 0),
-(22, 3, 'APPLE 10.5" iPad Pro - 64 GB, Space Grey (2017)', 619, 1000, 'upload/22.jpg', 0);
+CREATE TABLE `purchase` (
+  `purcase_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `subtotal` int(25) NOT NULL,
+  `purchase_quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase_final`
+--
+
+CREATE TABLE `purchase_final` (
+  `id` int(11) NOT NULL,
+  `purchase_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `total_purchase` int(11) NOT NULL,
+  `quantity_purchase` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `return_trans`
+--
+
+CREATE TABLE `return_trans` (
+  `return_id` int(11) NOT NULL,
+  `purchase_id` int(11) NOT NULL,
+  `quantity` double NOT NULL,
+  `remarks` varchar(100) NOT NULL,
+  `photo` varchar(200) NOT NULL,
+  `return_type` tinyint(4) NOT NULL DEFAULT 0,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -155,63 +223,26 @@ INSERT INTO `product` (`productid`, `categoryid`, `product_name`, `product_price
 
 CREATE TABLE `sales` (
   `salesid` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
+  `cartid` int(10) NOT NULL,
+  `customer_name` varchar(100) NOT NULL,
   `sales_total` double NOT NULL,
-  `sales_date` datetime NOT NULL
+  `sales_date` datetime NOT NULL,
+  `sales_type` varchar(250) NOT NULL,
+  `product_name` varchar(250) NOT NULL,
+  `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sales`
---
-
-INSERT INTO `sales` (`salesid`, `userid`, `sales_total`, `sales_date`) VALUES
-(1, 2, 34, '2017-09-16 16:23:38'),
-(2, 2, 18, '2017-09-16 16:25:28'),
-(3, 2, 6, '2017-09-16 16:27:31'),
-(4, 2, 1014244, '2017-09-16 16:44:01'),
-(5, 2, 9588, '2017-09-18 09:06:29'),
-(6, 2, 88779, '2017-09-18 09:08:42'),
-(7, 2, 15579, '2017-09-18 09:09:34'),
-(8, 2, 112361, '2017-09-18 09:32:00'),
-(9, 2, 7990, '2017-09-18 09:34:29'),
-(10, 2, 18370, '2017-09-18 11:09:21');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_detail`
+-- Table structure for table `services`
 --
 
-CREATE TABLE `sales_detail` (
-  `sales_detailid` int(11) NOT NULL,
-  `salesid` int(11) NOT NULL,
-  `productid` int(11) NOT NULL,
-  `sales_qty` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sales_detail`
---
-
-INSERT INTO `sales_detail` (`sales_detailid`, `salesid`, `productid`, `sales_qty`) VALUES
-(1, 2, 1, 12),
-(2, 2, 2, 10),
-(3, 3, 3, 11),
-(4, 4, 2, 50),
-(5, 4, 1, 106),
-(6, 4, 5, 1000),
-(7, 5, 2, 12),
-(8, 6, 5, 101),
-(9, 7, 1, 10),
-(10, 7, 3, 11),
-(11, 8, 4, 10),
-(12, 8, 20, 10),
-(13, 8, 1, 99),
-(14, 8, 2, 20),
-(15, 9, 2, 10),
-(16, 10, 2, 10),
-(17, 10, 3, 12),
-(18, 10, 4, 8);
+CREATE TABLE `services` (
+  `id` int(11) NOT NULL,
+  `product_name` varchar(250) NOT NULL,
+  `price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -231,7 +262,7 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`userid`, `company_name`, `company_address`, `contact`) VALUES
-(4, 'Dell Computer Corporation', 'One Dell WayRound Rock, Texas 78682', '1-800-WWW-DELL');
+(5, 'New Tires Corp.', 'Blk 98 lot 11 Molino Bacoor Cavite', '09650620136');
 
 -- --------------------------------------------------------
 
@@ -243,27 +274,41 @@ CREATE TABLE `user` (
   `userid` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(50) NOT NULL,
-  `access` int(1) NOT NULL
+  `access` int(1) NOT NULL,
+  `fullname` varchar(250) NOT NULL,
+  `contact` bigint(15) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `photo` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userid`, `username`, `password`, `access`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 2),
-(4, 'supplier', '99b0e8da24e29e4ccb5d7d76e677c2ac', 3);
+INSERT INTO `user` (`userid`, `username`, `password`, `access`, `fullname`, `contact`, `address`, `photo`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, '', 0, '', '');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `cart`
+-- Indexes for table `adminschedule`
 --
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cartid`);
+ALTER TABLE `adminschedule`
+  ADD PRIMARY KEY (`scheduleId`);
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`appId`);
+
+--
+-- Indexes for table `cart_final`
+--
+ALTER TABLE `cart_final`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `category`
@@ -278,6 +323,12 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`userid`);
 
 --
+-- Indexes for table `dummy_cart`
+--
+ALTER TABLE `dummy_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -290,16 +341,34 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`productid`);
 
 --
+-- Indexes for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`purcase_id`);
+
+--
+-- Indexes for table `purchase_final`
+--
+ALTER TABLE `purchase_final`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `return_trans`
+--
+ALTER TABLE `return_trans`
+  ADD PRIMARY KEY (`return_id`);
+
+--
 -- Indexes for table `sales`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`salesid`);
 
 --
--- Indexes for table `sales_detail`
+-- Indexes for table `services`
 --
-ALTER TABLE `sales_detail`
-  ADD PRIMARY KEY (`sales_detailid`);
+ALTER TABLE `services`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `supplier`
@@ -318,40 +387,96 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `cart`
+-- AUTO_INCREMENT for table `adminschedule`
 --
-ALTER TABLE `cart`
-  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `adminschedule`
+  MODIFY `scheduleId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `appId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+
+--
+-- AUTO_INCREMENT for table `cart_final`
+--
+ALTER TABLE `cart_final`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `dummy_cart`
+--
+ALTER TABLE `dummy_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `inventoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `inventoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+
+--
+-- AUTO_INCREMENT for table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `purcase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `purchase_final`
+--
+ALTER TABLE `purchase_final`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `return_trans`
+--
+ALTER TABLE `return_trans`
+  MODIFY `return_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `salesid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
 --
--- AUTO_INCREMENT for table `sales_detail`
+-- AUTO_INCREMENT for table `services`
 --
-ALTER TABLE `sales_detail`
-  MODIFY `sales_detailid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+ALTER TABLE `services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

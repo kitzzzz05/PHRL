@@ -16,8 +16,8 @@ while ($row = mysqli_fetch_array($query)) {
          values ('Customer in POS','$id','$price', NOW(), 'POS Purchase', '$prodName')");
 
          //insert to final cart
-    mysqli_query($conn, "INSERT into cart_final (cart_id,productid,quantity,amount,date) 
-    values ('$id', '$prodId', '$quantity','$price', NOW())");
+    mysqli_query($conn, "INSERT into cart_final (cart_id,productid,quantity,amount,date,status) 
+    values ('$id', '$prodId', '$quantity','$price', NOW(),'Sucess')");
 
     //UPDATE PRODUCT QUANTITY
     mysqli_query($conn, "UPDATE product set product_qty= product_qty-$quantity where productid='$prodId'");

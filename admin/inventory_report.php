@@ -72,11 +72,11 @@
 											}
 											?>>
 											<td class="hidden"></td>
-											<td><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></td>
-											<td align="right"><?php echo $iqrow['product_name']; ?></td>
-											<td align="right"><?php echo $iqrow['price']; ?></td>
-											<td align="right"><?php echo $iqrow['product_price']; ?></td>
-											<td align="right"><?php echo $iqrow['product_qty']; ?></td>
+											<td><center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center></td>
+											<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
+											<td align="right"><center><?php echo number_format( $iqrow['price'], 2); ?></center></td>
+											<td align="right"><center><?php echo number_format( $iqrow['product_price'], 2); ?></center></td>
+											<td align="right"><center><?php echo $iqrow['product_qty']; ?></center></td>
 										</tr>
 									<?php
 									}
@@ -94,11 +94,11 @@
 											}
 											?>>
 											<td class="hidden"></td>
-											<td><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></td>
-											<td align="right"><?php echo $iqrow['product_name']; ?></td>
-											<td align="right"><?php echo $iqrow['price']; ?></td>
-											<td align="right"><?php echo $iqrow['product_price']; ?></td>
-											<td align="right"><?php echo $iqrow['product_qty']; ?></td>
+											<td><center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center></td>
+											<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
+											<td align="right"><center><?php echo number_format( $iqrow['price'], 2);?></center></td>
+											<td align="right"><center><?php echo number_format( $iqrow['product_price'], 2);?></center></td>
+											<td align="right"><center><?php echo $iqrow['product_qty']; ?></center></td>
 
 										</tr>
 								<?php

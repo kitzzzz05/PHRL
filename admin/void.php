@@ -34,21 +34,27 @@
 					while($cqrow=mysqli_fetch_array($cq)){
 						$pid=$cqrow['id']
 					?>
-						<tr>
-							<td><?php echo $cqrow['cart_id']; ?></td>
-							<td><?php echo $cqrow['product_name']; ?></td>
-							<td><?php echo $cqrow['quantity']; ?></td>
-                            <td><?php echo number_format($cqrow['amount'], 2);  ?></td>
-							<td><?php echo $cqrow['date']; ?></td>
-                            <td><?php echo $cqrow['status']; ?></td>
-							<td>
+					<tr>
+							<td><center><?php echo $cqrow['cart_id']; ?></center></td>
+							<td><center><?php echo $cqrow['product_name']; ?></center></td>
+							<td><center><?php echo $cqrow['quantity']; ?></center></td>
+                            <td><center><?php echo number_format($cqrow['amount'], 2);  ?></center></td>
+							<td><center><?php echo $cqrow['date']; ?></center></td>
+                            <td><center> <?php if( $cqrow['status'] == 'Sucess'){ ?>
+                            <span class='badge badge-pill' style='background:green'><?php echo $cqrow['status']; ?></span></center></td>
+                         <?php   }
+                         else{ ?>
+                            <span class='badge badge-pill' style='background:red'><?php echo $cqrow['status']; ?></span></center></td>
+                    <?php     }?>
+                                
+							<td><center>
                                 <?php 
                                if($cqrow['status'] <> 'Voided'){
                                    ?>  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#void_<?php echo $pid; ?>"><i class="fa fa-remove"></i> Void</button>
                             	<?php   }  include('remove_modal_void.php'); ?>
 							
-							</td>
-						</tr>
+                                </center></td>
+                               </tr>
 					<?php
 					}
 				?>

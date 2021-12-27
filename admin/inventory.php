@@ -35,7 +35,7 @@
 					?>
 						<tr>
 							<td class="hidden"></td>
-							<td><?php echo date('M d, Y h:i A',strtotime($iqrow['inventory_date'])); ?></td>
+							<td><center><?php echo date('M d, Y h:i A',strtotime($iqrow['inventory_date'])); ?></center></td>
 							<td>
 							<?php 
 								$u=mysqli_query($conn,"select * from `user` left join customer on customer.userid=user.userid left join supplier on supplier.userid=user.userid where user.userid='".$iqrow['userid']."'");
@@ -46,9 +46,9 @@
 								
 							?>
 							</td>
-							<td align="right"><?php echo $iqrow['action']; ?></td>
-							<td align="right"><?php echo $iqrow['product_name']; ?></td>
-							<td align="right"><?php echo $iqrow['quantity']; ?></td>
+							<td align="right"><center><?php echo $iqrow['action']; ?></center></td>
+							<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
+							<td align="right"><center><?php echo $iqrow['quantity']; ?></center></td>
 						</tr>
 					<?php
 					}

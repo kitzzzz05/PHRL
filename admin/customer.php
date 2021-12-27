@@ -31,15 +31,15 @@
 					while($cqrow=mysqli_fetch_array($cq)){
 					?>
 						<tr>
-							<td><?php echo $cqrow['customer_name']; ?></td>
-							<td><?php echo $cqrow['email']; ?></td>
-							<td><?php echo $cqrow['address']; ?></td>
-							<td><?php echo $cqrow['contact']; ?></td>
-							<td>
+							<td><center><?php echo $cqrow['customer_name']; ?></center></td>
+							<td><center><?php echo $cqrow['email']; ?></center></td>
+							<td><center><?php echo $cqrow['address']; ?></center></td>
+							<td><center><?php echo $cqrow['contact']; ?></center></td>
+							<td><center>
 								<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_<?php echo $cqrow['userid']; ?>"><i class="fa fa-edit"></i> Edit</button>
 								<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#del_<?php echo $cqrow['userid']; ?>"><i class="fa fa-trash"></i> Delete</button>
 								<?php include('customer_button.php'); ?>
-							</td>
+							</td></center>
 						</tr>
 					<?php
 					}
