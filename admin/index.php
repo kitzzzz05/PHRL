@@ -22,6 +22,9 @@
 		Password: <input type="password" name="password" class="form-control" required>
 		<div style="height: 10px;"></div>
 		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+		<span class="pull-right">
+		<a data-toggle="modal" data-target="#register"><i ></i>Register</a>
+		</span>
 		</form>
 		<div style="height: 15px;"></div>
 		<div style="color: red; font-size: 15px;">
@@ -37,5 +40,6 @@
 	</div>
 </div>
 <?php include('script2.php'); ?>
+<?php include('add_modal.php'); ?>
 </body>
 </html>

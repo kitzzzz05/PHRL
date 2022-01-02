@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 					<div class="col-lg-12">
 						<h1 class="page-header">POS
 							<span class="pull-right">
-								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule"><i class="fa fa-plus-circle"></i>Search Item</button>
+								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule"><i class="fa fa-search"></i> Search Item</button>
 							</span>
 						</h1>
 						</h1>
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 							</div>
 							<div class="panel panel-primary" style="width:400px;">
 								<div class="panel-heading">
-									<h4><i class="fa fa-search"></i> Item</h4>
+									<h4><i></i> Item</h4>
 								</div>
 								<div class="panel-body">
 									<form role="form" method="POST" action="#">

@@ -536,13 +536,14 @@ if (isset($_GET['code'])) {
         <!-- forth section end -->
 
         <!-- footer start -->
-        <div class="copyright-bar bg-black">
+        
+        <!-- footer end -->
+    </div>
+    <div class="copyright-bar bg-black">
             <div class="container">
                 <!-- <p class="pull-right small"><a href="admin/">admin</a></p> -->
             </div>
         </div>
-        <!-- footer end -->
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/date/bootstrap-datepicker.js"></script>
