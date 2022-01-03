@@ -9,10 +9,11 @@ while ($row = mysqli_fetch_array($query)) {
     $total = $row['subtotal'];
     $quant =  $row['purchase_quantity'];
     $suppId = $row['userid'];
+    $status = 0;
 
 
-    mysqli_query($conn, "INSERT into purchase_final (purchase_id, product_id, total_purchase, quantity_purchase, date,supplier_id)
-    values ('$id','$prodId','$total', '$quant',NOW(), '$suppId')");
+    mysqli_query($conn, "INSERT into purchase_final (purchase_id, product_id, total_purchase, quantity_purchase, date,supplier_id,status)
+    values ('$id','$prodId','$total', '$quant',NOW(), '$suppId', '$status')");
 
     //UPDATE PRODUCT QUANTITY
 //     mysqli_query($conn, "UPDATE product set product_qty= product_qty+$quant where productid='$prodId'"); move to order data

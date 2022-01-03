@@ -27,7 +27,7 @@
 									<th>Prod Price</th>
 									<th>Selling Price</th>
 									<th>Quantity</th>
-									<th>About</th>
+									<th>Description</th>
 									<th>Photo</th>
 									<th>Action</th>
 								</tr>

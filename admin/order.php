@@ -38,9 +38,12 @@
                                     <th>Purchase ID</th>
                                     <th>Product Id</th>
                                     <th>Supplier Id</th>
-                                    <th>Date</th>
+                             
                                     <th>Purchase Quantity</th>  
+                                           <th>Date</th>
                                     <th>Purchase Amount</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,18 +68,27 @@
                                             <td>
                                                 <?php echo $sqrow['supplier_id']; ?>
                                             </td>
-                                            
-                                          
                                             <td><?php echo date('M d, Y h:i A', strtotime($sqrow['date'])); ?></td>
                                             <td>
                                                 <?php echo $sqrow['quantity_purchase']; ?>
                                             </td>
                                             <td align="right"><?php echo number_format($sqrow['total_purchase'], 2);
                                                                 $total += $sqrow['total_purchase']; ?></td>
+                                            <td>
+                                                <?php if($sqrow['status'] == 0):?>
+                                                    <span class='badge badge-pill badge-warning'>Pending</span> 
+                                                <?php elseif($sqrow['status'] == 1):?>
+                                                    <span class='badge badge-pill badge-primary'>Received</span>        
+                                                <?php elseif($sqrow['status'] == 2):?>
+                                                    <span class='badge badge-pill badge-info'>Confirm</span>
+                                                    <?php endif;?>
+                                            </td>
+                                            <td>
+                                            </td>
                                         </tr>
                                     <?php    } ?>
                                     <tr>
-                                        <td colspan="6"><strong>Grand Total</strong></span></td>
+                                        <td colspan="8"><strong>Grand Total</strong></span></td>
                                         <td><strong><span class="pull-right"><?php echo number_format($total, 2) ?></span><strong></td>
                                     </tr>
                                     <?php
@@ -84,33 +96,57 @@
                                 } else {
                                     $sq = mysqli_query($conn, "SELECT * FROM purchase_final  WHERE DATE(date) BETWEEN '$from' AND '$to' ORDER by date asc");
                                     while ($sqrow = mysqli_fetch_array($sq)) {
+                                        $pid = $sqrow['id'];
                                     ?>
                                     <tr>
                                         <td class="hidden"></td>
 
-                                        <td><?php echo $sqrow['id']; ?></td>
+                                   <td><center><?php echo $sqrow['id']; ?></center></td> 
 
-                                        <td>
-                                            <?php echo $sqrow['purchase_id']; ?>
+                                        <td><center>
+                                            <?php echo $sqrow['purchase_id']; ?></center>
                                         </td>
-                                        <td>
-                                            <?php echo $sqrow['product_id']; ?>
+                                        <td><center>
+                                            <?php echo $sqrow['product_id']; ?></center>
                                         </td>
-                                        <td>
-                                            <?php echo $sqrow['supplier_id']; ?>
+                                        <td><center>
+                                            <?php echo $sqrow['supplier_id']; ?></center>
                                         </td>
                                         
-                                        <td>
-                                            <?php echo $sqrow['quantity_purchase']; ?>
+                                        <td><center>
+                                            <?php echo $sqrow['quantity_purchase']; ?></center>
                                         </td>
-                                        <td><?php echo date('M d, Y h:i A', strtotime($sqrow['date'])); ?></td>
-                                        <td align="right"><?php echo number_format($sqrow['total_purchase'], 2);
-                                                            $total += $sqrow['total_purchase']; ?></td>
+                                        <td><center><?php echo date('M d, Y h:i A', strtotime($sqrow['date'])); ?></center></td>
+                                        <td align="right"><center><?php echo number_format($sqrow['total_purchase'], 2);
+                                                            $total += $sqrow['total_purchase']; ?></center></td>
+                                        <td><center>
+                                        <?php if($sqrow['status'] == 0):?>
+                                            <span class='badge badge-pill' style='background:#c78949 '>Pending</span> 
+                                        <?php elseif($sqrow['status'] == 1):?>
+                                            <span class='badge badge-pill' style='background:#49c769 '>Received</span>        
+                                        <?php elseif($sqrow['status'] == 2):?>
+                                            <span class='badge badge-pill' style='background:#49a7c7 '>Confirm</span>
+                                            <?php endif;?>
+                                            </center></td>
+                                        <td><center>
+                                            <?php if($sqrow['status'] == 0):?>
+                                                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editorder_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Edit</button>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delorder_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
+                                            <?php elseif($sqrow['status']== 1):?>
+                                                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editorder_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Edit</button>
+                                                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delorder_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
+                                                <?php elseif($sqrow['status'] == 2):?>
+                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delorder_<?php echo $pid; ?>"><i class="fa fa-trash"></i> Delete</button>
+                                            <?php endif;?>
+                                            <?php include('order_modal.php'); ?>
+                                            </center></td>
+                                        <td>
+                                        </td>
                                    <?php
                                     }
                                     ?>
                                     <tr>
-                                        <td colspan="6"><strong>Grand Total</strong></span></td>
+                                        <td colspan="8"><strong>Grand Total</strong></span></td>
                                         <td><strong><span class="pull-right"><?php echo number_format($total, 2) ?></span><strong></td>
                                     </tr>
 
