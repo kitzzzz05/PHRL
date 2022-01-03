@@ -17,11 +17,10 @@
                                 <span style="width:120px;" class="input-group-addon">Item Name:</span>
                                 <select style="width:400px;" class="form-control" name="order_num" id="order_num" required>
                                     <?php
-                                    $pur = mysqli_query($conn, "select * from purchase_final 
-                                                            left join product on product.productid=purchase_final.product_id");
+                                    $pur = mysqli_query($conn, "SELECT * from purchase_final as a
+                                                            left join product as b on b.productid=a.product_id WHERE a.status = '1' ");
                                     while ($purrow = mysqli_fetch_array($pur)) {
                                     ?>
-                                        <option value=""></option>
                                         <option value="<?php echo $purrow['id']; ?>"><?php echo "(".$purrow['id'].") ". $purrow['product_name']; ?></option>
                                     <?php
                                      }
