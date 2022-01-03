@@ -81,6 +81,15 @@
                             <input type="text" style="width:400px;" class="form-control" name="subtotal" value="<?php echo number_format($b['total_purchase'], 2) ?>" disabled>
                         </div>
 						<div style="height:10px;"></div>
+                        <div class="form-group input-group">
+                            <span style="width:120px;" class="input-group-addon">Status</span>
+                            <select style="width:400px;" class="form-control" name="status" id="status">
+                                <option></option>
+                                <option <?php if($b['status'] == 0) { echo "selected"; } ?> value="0">Pending</option>
+                                <option <?php if($b['status'] == 1) { echo "selected"; } ?> value="1">Received</option>
+                                <option <?php if($b['status'] == 2) { echo "selected"; } ?> value="2">Confirm</option>
+                            </select>
+                        </div>
 				</div>
 				</div>
                 <div class="modal-footer">
