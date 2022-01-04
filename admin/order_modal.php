@@ -39,7 +39,8 @@
                 <div class="modal-body">
 				<div class="container-fluid">
 					<?php
-						$a=mysqli_query($conn,"select * from purchase_final left join product on product.productid=purchase_final.product_id left join supplier on supplier.userid=purchase_final.supplier_id where id='$pid'");
+						$a=mysqli_query($conn,"select * from purchase_final left join product on 
+                        product.productid=purchase_final.product_id left join supplier on supplier.userid=purchase_final.supplier_id where id='$pid'");
 						$b=mysqli_fetch_array($a);
 					?>
 					<div style="height:10px;"></div>
@@ -59,15 +60,15 @@
                         <?php if($_SESSION['id'] == 1){ ?>
                             <div style="height:10px;"></div>
                             <div class="form-group input-group">
-                            <span style="width:120px;" class="input-group-addon">Selling Price:</span>
-                            <input type="text" style="width:400px;" class="form-control" name="sellprice" value="<?php echo $b['product_price'] ?>"required>
+                            <span style="width:120px;" class="input-group-addon">Product Price:</span>
+                            <input type="text" style="width:400px;" class="form-control" name="sellprice" value="<?php echo $b['price'] ?>"required>
                         </div>
                       <?php }?>
                       <?php if($_SESSION['id']  <>1){ ?>
                             <div style="height:10px;"></div>
                             <div class="form-group input-group">
-                            <span style="width:120px;" class="input-group-addon">Selling Price:</span>
-                            <input type="text" style="width:400px;" class="form-control" name="sellprice" value="<?php echo $b['product_price'] ?>" readonly>
+                            <span style="width:120px;" class="input-group-addon">Product Price:</span>
+                            <input type="text" style="width:400px;" class="form-control" name="sellprice" value="<?php echo $b['price'] ?>" readonly>
                         </div>
                       <?php }?>
 						<div style="height:10px;"></div>

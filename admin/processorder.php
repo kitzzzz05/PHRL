@@ -15,8 +15,6 @@ while ($row = mysqli_fetch_array($query)) {
     mysqli_query($conn, "INSERT into purchase_final (purchase_id, product_id, total_purchase, quantity_purchase, date,supplier_id,status)
     values ('$id','$prodId','$total', '$quant',NOW(), '$suppId', '$status')");
 
-    //UPDATE PRODUCT QUANTITY
-//     mysqli_query($conn, "UPDATE product set product_qty= product_qty+$quant where productid='$prodId'"); move to order data
 
     //DELETE FROM DUMMY CART
     mysqli_query($conn, "DELETE from purchase WHERE purcase_id = '$id'");

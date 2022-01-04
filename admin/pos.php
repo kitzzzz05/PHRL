@@ -137,7 +137,7 @@ if (isset($_POST['submit'])) {
 									<tr>
 										<td>Change</td>
 										<td><input type="text" class="form-control" id="change_pay" readonly></td>
-										<td></td>
+										<td> <span id = "message" style="color:red"> </span></td>
 										<td>
 											<a onclick="getUrl(<?php echo $total ?>)">
 												<button class="btn btn-default" id="print" disabled>
@@ -175,12 +175,25 @@ if (isset($_POST['submit'])) {
 					var second_number = parseFloat(text2.value);
 					if (isNaN(second_number)) second_number = 0;
 					var result = second_number - first_number;
+					if(result < 0){
+						result = "";
+						document.getElementById("message").innerHTML = "Insufficient Pay";  
+						document.getElementById("change_pay").value = result;
+				
+					}else{
+						document.getElementById("message").innerHTML = "";  
+						document.getElementById("change_pay").value = result;
 
-					document.getElementById("change_pay").value = result;
-					if (document.getElementById("change_pay").value >= 0) {
+						if (document.getElementById("change_pay").value =="") {
+						
+					}else{
 						document.getElementById("paybutton").disabled = false;
 						document.getElementById("print").disabled = false;
 					}
+					}
+
+				
+					
 
 				}
 			</script>

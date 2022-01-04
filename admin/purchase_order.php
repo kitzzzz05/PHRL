@@ -5,9 +5,16 @@
 
 if (isset($_POST['submit'])) {
 
-    $prodid = $_POST['prodid'];
-    mysqli_query($conn, "INSERT into purchase (product_id, date,purchase_quantity)
-		VALUES ('$prodid',now(),1)");
+    echo $suppid = $_POST['prodid'];
+
+    // $suppid = $_POST['prodid'];
+    // $cat = mysqli_query($conn, "select * from product WHERE supplierid=' $suppid '");
+    // while ($catrow = mysqli_fetch_array($cat)) {
+    //     $prodid = $catrow['productid'];
+    //     mysqli_query($conn, "INSERT into purchase (product_id, date,purchase_quantity)
+	// 	VALUES ('$prodid',now(),1)");
+    // }
+  
 }
 ?>
 
@@ -30,26 +37,26 @@ if (isset($_POST['submit'])) {
                         <div class="col-lg-12 main-chart">
                             <br>
 
-                            <h2> &nbsp;&nbsp;&nbsp; PRODUCT</h2>
+                            <h2> &nbsp;&nbsp;&nbsp; SUPPLIER</h2>
 
                             <div class="panel-body">
-                                <form role="form" method="POST">
+                                
                                     <div class="form-group input-group">
 
                                         <select style="width:400px;" class="form-control" name="prodid">
                                             <?php
-                                            $cat = mysqli_query($conn, "select * from product");
+                                            $cat = mysqli_query($conn, "select * from supplier");
                                             while ($catrow = mysqli_fetch_array($cat)) {
                                             ?>
-                                                <option value="<?php echo $catrow['productid']; ?>"><?php echo $catrow['product_name']; ?></option>
+                                                <option value="<?php echo $catrow['userid']; ?>"><?php echo $catrow['company_name']; ?></option>
                                             <?php
                                             }
                                             ?>
                                         </select>
                                     </div>
                                     <br>
-                                    <input type="submit" name="submit" value="Add" class="btn btn-success" />
-                                </form>
+                                    <input type="submit"  data-toggle="modal" data-target="#addschedule" name="submit" value="Add" class="btn btn-success" />
+                                
                             </div>
                         </div>
                         <div class="row">
@@ -59,7 +66,7 @@ if (isset($_POST['submit'])) {
 
                                         <th>Product Name</th>
                                         <th>Supplier</th>
-                                        <th>Product Price</th>
+                                        <th>Supplier Price</th>
                                         <th>Purchase Qty</th>
                                         <th>SubTotal</th>
                                         <th></th>
@@ -122,6 +129,8 @@ if (isset($_POST['submit'])) {
                     document.getElementById("print").disabled = false;
 
                 }
+
+                
               
 
                     function getUrl(id,prodId) {
@@ -148,6 +157,7 @@ if (isset($_POST['submit'])) {
                 </script>
                 <?php include('script.php'); ?>
                 <script src="custom.js"></script>
+                <?php include('add_modal_schedule.php'); ?>
 </body>
 
 </html>
