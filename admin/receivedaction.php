@@ -21,6 +21,10 @@ if ($count < $purchaseQuantity) {
 	mysqli_query($conn, "INSERT into backorder (purchase_id,product_id,supplier_id,quantity,date,status) 
 	values 
 	( '$purchaseid','$prodId','$suppid',($purchaseQuantity -$count),NOW(),'Pending')");
+
+	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$count,product_price = '$price' 
+	where productid='$prodId'");
+
 } else {
 	mysqli_query($conn, "UPDATE purchase_final set status = 1 WHERE id='$id' ");
 	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$purchaseQuantity,product_price = '$price' 
