@@ -1,23 +1,6 @@
 <?php include('session.php'); ?>
 <?php include('header.php'); ?>
 
-<?php
-
-if (isset($_POST['submit'])) {
-
-    echo $suppid = $_POST['prodid'];
-
-    // $suppid = $_POST['prodid'];
-    // $cat = mysqli_query($conn, "select * from product WHERE supplierid=' $suppid '");
-    // while ($catrow = mysqli_fetch_array($cat)) {
-    //     $prodid = $catrow['productid'];
-    //     mysqli_query($conn, "INSERT into purchase (product_id, date,purchase_quantity)
-	// 	VALUES ('$prodid',now(),1)");
-    // }
-  
-}
-?>
-
 <head>
 
 
@@ -34,29 +17,30 @@ if (isset($_POST['submit'])) {
 
                             </span>
                         </h1>
+
+
                         <div class="col-lg-12 main-chart">
                             <br>
 
                             <h2> &nbsp;&nbsp;&nbsp; SUPPLIER</h2>
 
                             <div class="panel-body">
-                                
-                                    <div class="form-group input-group">
 
-                                        <select style="width:400px;" class="form-control" name="prodid">
-                                            <?php
-                                            $cat = mysqli_query($conn, "select * from supplier");
-                                            while ($catrow = mysqli_fetch_array($cat)) {
-                                            ?>
-                                                <option value="<?php echo $catrow['userid']; ?>"><?php echo $catrow['company_name']; ?></option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <br>
-                                    <input type="submit"  data-toggle="modal" data-target="#addschedule" name="submit" value="Add" class="btn btn-success" />
-                                
+                                <div class="form-group input-group">
+
+                                    <select style="width:400px;" class="form-control" name="prodid" id="prodid">
+                                        <?php
+                                        $cat = mysqli_query($conn, "select * from supplier");
+                                        while ($catrow = mysqli_fetch_array($cat)) {
+                                        ?>
+                                            <option value="<?php echo $catrow['userid']; ?>"><?php echo $catrow['company_name']; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <br>
+                                <a class="btn btn-success view_data2">view product</a>
                             </div>
                         </div>
                         <div class="row">
@@ -87,13 +71,12 @@ if (isset($_POST['submit'])) {
                                                 <td><?php echo $row['product_name']; ?></td>
                                                 <td><?php echo $row['company_name']; ?></td>
                                                 <td><input type="text" style="width:100px;" value="<?php echo number_format($row['price'], 2);  ?>" id="price_<?php echo $total  ?>"></td>
-                                                <td><input type="number" style="width:100px;" id="quantity_<?php echo $total  ?>" oninput="getChange(<?php echo $total ?>)" min="0" 
-                                                value="<?php   echo $row['purchase_quantity'] > 0 ? $row['purchase_quantity'] :  1 ?>">
+                                                <td><input type="number" style="width:100px;" id="quantity_<?php echo $total  ?>" oninput="getChange(<?php echo $total ?>)" min="0" value="<?php echo $row['purchase_quantity'] > 0 ? $row['purchase_quantity'] :  1 ?>">
                                                 </td>
                                                 <td><strong><span class="subt" id="tag_<?php echo $total  ?>"><?php echo number_format($row['purchase_quantity'] * $row['price'], 2) ?></span></strong></td>
                                                 <td><a class="btn btn-danger btn-sm" href="deletepurchase.php?id=<?php echo $row['purcase_id']; ?>">
                                                         <span class="glyphicon glyphicon-trash"></span> </a>
-                                                    <a class="btn btn-primary btn-sm" onclick="getUrl(<?php echo $total?>,<?php echo  $prodId?>)">
+                                                    <a class="btn btn-primary btn-sm" onclick="getUrl(<?php echo $total ?>,<?php echo  $prodId ?>)">
                                                         <span class="glyphicon glyphicon-save"></span></a>
                                                 </td>
                                             </tr>
@@ -102,13 +85,13 @@ if (isset($_POST['submit'])) {
                                         ?>
                                         <tr>
                                             <td colspan="5"><span class="pull-right"></td>
-                                           
+
                                             <td><strong>
-                                            <a href="processorder.php"><button class="btn btn-success" id="order" disabled>Process</button></a>
-                                            <a href="testprint.php" target="_blank">
-												<button class="btn btn-default" id ="print" disabled>
-													<i class="fa fa-print"></i> Print
-												</button></a>
+                                                    <a href="processorder.php"><button class="btn btn-success" id="order" disabled>Process</button></a>
+                                                    <a href="testprint.php" target="_blank">
+                                                        <button class="btn btn-default" id="print" disabled>
+                                                            <i class="fa fa-print"></i> Print
+                                                        </button></a>
                                             </td>
                                         </tr>
 
@@ -122,23 +105,41 @@ if (isset($_POST['submit'])) {
 
                 </div>
 
+                <div class="modal fade" id="modal-lgg" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog-centered modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Product Information</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <form action="extras/ajaxcall.php?submitpurchase" method="POST">
+                                <div class="modal-body" id="addpurchase">
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+
+
                 <script type="text/javascript">
-                
-                if(<?php echo $total > 0?>){
-                    document.getElementById("order").disabled = false;
-                    document.getElementById("print").disabled = false;
+                    if (<?php echo $total > 0 ?>) {
+                        document.getElementById("order").disabled = false;
+                        document.getElementById("print").disabled = false;
 
-                }
+                    }
 
-                
-              
-
-                    function getUrl(id,prodId) {
+                    function getUrl(id, prodId) {
                         var text1 = document.getElementById("price_" + id);
                         var text2 = document.getElementById("quantity_" + id);
                         var price = parseFloat(text1.value);
                         var quant = parseFloat(text2.value);
-                        window.location.href = "savepurchase.php?id=" + id + "&prodid="+ prodId+"&price=" + price + "&quant="+quant+"";
+                        window.location.href = "savepurchase.php?id=" + id + "&prodid=" + prodId + "&price=" + price + "&quant=" + quant + "";
                     }
 
                     function getChange(total) {
@@ -155,9 +156,35 @@ if (isset($_POST['submit'])) {
                         document.getElementById('tag_' + total).innerHTML = result + ".00";
                     }
                 </script>
+
+
                 <?php include('script.php'); ?>
                 <script src="custom.js"></script>
-                <?php include('add_modal_schedule.php'); ?>
+
+
 </body>
 
+
+
+
 </html>
+
+
+
+<script>
+    $(document).on('click', '.view_data2', function() {
+        var choice = document.getElementById("prodid").value;
+        var sku = $(this).attr("id");
+        $.ajax({
+            url: "extras/ajaxcall.php?addpurchase",
+            method: "post",
+            data: {
+                "id": choice
+            },
+            success: function(data) {
+                $('#addpurchase').html(data);
+                $('#modal-lgg').modal("show");
+            }
+        });
+    });
+</script>

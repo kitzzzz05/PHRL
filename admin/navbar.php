@@ -154,7 +154,13 @@ $access = $srow['access'];
                                 <a href="order.php">Order data</a>
                             </li>
                             <li>
-                                <a href="return.php">Return Transaction</a>
+                                <a href="received_order.php">Recevied Order</a>
+                            </li>
+                            <li>
+                                <a href="back_order.php">Back Order</a>
+                            </li>
+                            <li>
+                                <a href="return.php">Return Order</a>
                             </li>
                         </ul>
                     </li>

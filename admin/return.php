@@ -9,7 +9,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Return Transaction
+						<h1 class="page-header">Return Order
 							<span class="pull-right">
 								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addReturnproduct"><i class="fa fa-minus-circle"></i> Return Item</button>
 							</span>

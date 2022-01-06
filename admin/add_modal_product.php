@@ -43,16 +43,9 @@
                                     ?>
                                 </select>
                             </div>
-                            <?php if ($_SESSION['id'] == 1) { ?>
-                                <div class="form-group input-group">
-                                    <span style="width:120px;" class="input-group-addon">Selling Price:</span>
-                                    <input type="text" style="width:400px;" class="form-control" name="price2" required>
-                                </div>
-                            <?php } ?>
-
                             <div class="form-group input-group">
-                                <span style="width:120px;" class="input-group-addon">About:</span>
-                                <input type="text" style="width:400px;" class="form-control" name="about" required>
+                                <span style="width:120px;" class="input-group-addon">Description:</span>
+                                <textarea rows = "5" cols = "50" style="width:400px;" class="form-control" name="about" required></textarea>
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Photo:</span>

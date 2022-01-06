@@ -44,8 +44,7 @@
 
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Remark:</span>
-                                <textarea rows = "5" cols = "50" class="form-control" name="remark" name = "remark">
-                                </textarea>
+                                <textarea rows = "5" cols = "50" class="form-control" name="remark" name = "remark"></textarea>
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Photo:</span>
