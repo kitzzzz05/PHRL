@@ -31,9 +31,21 @@
 					</div>
 
 				</div>
-				<button class="btn btn-default" id="print">
-					<i class="fa fa-print"></i> Print
-				</button></a>
+				<form method="post" action="print_inventory.php" target="_new" class="form-inline">
+					<div class="form-group">
+					<?php
+						if (isset($_POST["Submit1"])) {
+							$from = $_POST['from'];
+							$to = $_POST['to'];
+						}
+					?>
+						<input type="hidden" name="from" value="<?php echo $from; ?>">
+						<input type="hidden" name="to" value="<?php echo $to; ?>">
+						<button class="submit" id="print" >
+							<i class="fa fa-print"></i> Print
+						</button></a>
+					</div>
+				</form>
 				<br>
 
 				</br>
@@ -45,8 +57,6 @@
 						<table width="100%" class="table table-striped table-bordered table-hover" id="invTable">
 							<thead>
 								<tr>
-
-									<th class="hidden"></th>
 									<th>Date</th>
 									<th>Product Name</th>
 									<th>Orinal Price</th>

@@ -33,6 +33,7 @@
 			$row=mysqli_fetch_array($query);
 				$_SESSION['id']=$row['userid'];
 				$_SESSION['acces']=$row['access'];
+				$_SESSION['username']=$row['username'];
 				?>
 				<script>
 					window.alert('Login Success, Welcome!');

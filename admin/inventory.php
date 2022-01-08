@@ -11,9 +11,9 @@
             <h1 class="page-header">Inventory Logs Report</h1>
         </div>
     </div>
-	<button class="btn btn-default" id ="print">
-													<i class="fa fa-print"></i> Print
-												</button></a>
+	<button class="btn btn-default" id ="print" onclick="printPage()">
+		<i class="fa fa-print"></i> Print
+	</button></a>
 	<br></br>
     <div class="row">
         <div class="col-lg-12">
@@ -64,5 +64,10 @@
 <?php include('modal.php'); ?>
 <?php include('add_modal.php'); ?>
 <script src="custom.js"></script>
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
 </body>
 </html>
