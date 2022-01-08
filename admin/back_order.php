@@ -80,7 +80,8 @@
                                         <td>
 
                                             <center>
-                                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#backorder_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Receive</button>  </center>
+                                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#backorder_<?php echo $pid; ?>"><i class="fa fa-edit"></i> Back Order</button>  </center>
+                                                    <?php include('backorder_modal.php'); ?>
 
                                         </td>
 
