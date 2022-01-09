@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_array($query)) {
     mysqli_query($conn, "DELETE from purchase WHERE purcase_id = '$id'");
 
     mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-         values ('" . $_SESSION['id'] . "','Update Stock', '$prodId', '$quant', NOW())");
+         values ('" . $_SESSION['id'] . "','Buy Stock', '$prodId', '$quant', NOW())");
 }
 header('location:purchase_order.php');
 ?>
