@@ -49,6 +49,8 @@
 							<thead>
 								<tr>
 									<th class="hidden"></th>
+									<th>Sales Id</th>
+									<th>Order Id</th>
 									<th>Sales Date</th>
 									<th>Customer</th>
 									<th>Product Name</th>
@@ -99,8 +101,15 @@
 										<tr>
 											<td class="hidden"></td>
 											<td>
+												<center><?php echo $sqrow['salesid']; ?></center>
+											</td>
+											<td>
+												<center><?php echo $sqrow['cartid']; ?></center>
+											</td>
+											<td>
 												<center><?php echo date('M d, Y h:i A', strtotime($sqrow['sales_date'])); ?></center>
 											</td>
+											
 											<td>
 												<center><?php echo $sqrow['customer_name']; ?></center>
 											</td>
@@ -131,7 +140,7 @@
 									}
 									?>
 									<tr>
-										<td colspan="5"><strong>Grand Total</strong></span></td>
+										<td colspan="7"><strong>Grand Total</strong></span></td>
 										<td><strong><span class="pull-right"><?php echo number_format($total, 2) ?></span><strong></td>
 									</tr>
 

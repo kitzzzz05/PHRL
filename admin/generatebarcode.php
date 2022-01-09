@@ -27,7 +27,7 @@ $con = mysqli_connect("localhost", "root", "", "pos");
 			</h1>
             <form class="form-horizontal" method="post" action="barcode.php" target="_blank">
   	<div class="form-group">
-      <label class="control-label col-sm-2" for="product">Product ID:</label>
+      <label class="control-label col-sm-2" for="product">Name ID:</label>
       <div class="col-sm-10">
       <select  class="form-control" id='user_id' name="user_id" onchange="GetDetail(this.value)">
 	  <option>--Select Product--</option>
@@ -51,15 +51,13 @@ $con = mysqli_connect("localhost", "root", "", "pos");
 						value="" readonly>
       </div>
     </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="print_qty">Barcode Quantity</label>
-      <div class="col-sm-10">          
-        <input autocomplete="OFF" type="print_qty" class="form-control" id="print_qty"  name="print_qty" required="">
-      </div>
-    </div>
+   
+              
+        <input type="hidden" id="print_qty"  name="print_qty" value="1">
+  
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Generate</button>
       </div>
         </div>
     </div>
