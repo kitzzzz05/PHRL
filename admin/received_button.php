@@ -40,7 +40,44 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="delreturn_<?php echo $pid; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <center>
+                    <h4 class="modal-title" id="myModalLabel">Cancel Order</h4>
+                </center>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <?php
+                    $a = mysqli_query($conn, "SELECT * from purchase_final a join product b 
+                        on a.product_id = b.productid where id='$pid'");
+                    $b = mysqli_fetch_array($a);
+                    ?>
+                    <form role="form" method="POST" action="cancelorder.php<?php echo '?id=' .$b['id']; ?>" enctype="multipart/form-data">
+                        <h5>
+                            <center>Purchase ID: <strong><?php echo $b['purchase_id']; ?></strong></center>
+                        </h5>
+                        <h5>
+                            <center>Product name: <strong><?php echo $b['product_name']; ?></strong></center>
+                        </h5>
+                        
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success"><i class="fa fa-success"></i> Confirm</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <style>
     input {

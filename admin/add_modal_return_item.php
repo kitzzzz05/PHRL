@@ -18,7 +18,8 @@
                                 <select style="width:400px;" class="form-control" name="order_num" id="order_num" required>
                                     <?php
                                     $pur = mysqli_query($conn, "SELECT * from purchase_final as a
-                                                            left join product as b on b.productid=a.product_id WHERE a.status = '1' ");
+                                                            left join product as b on b.productid=a.product_id WHERE a.status = '1' AND 
+                                                            a.quantity_purchase <> 0 ");
                                     while ($purrow = mysqli_fetch_array($pur)) {
                                     ?>
                                         <option value="<?php echo $purrow['id']; ?>"><?php echo "(".$purrow['id'].") ". $purrow['product_name']; ?></option>

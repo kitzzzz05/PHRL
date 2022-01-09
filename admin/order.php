@@ -133,8 +133,9 @@
                                                     <?php elseif ($sqrow['status'] == 1) : ?>
                                                         <span class='badge badge-pill' style='background:#49c769 '>Received</span>
                                                     <?php elseif ($sqrow['status'] == 2) : ?>
-                                                        <span class='badge badge-pill' style='background:#49a7c7 '>Confirm</span>
+                                                        <span class='badge badge-pill' style='background:#49a7c7 '>Cancelled</span>
                                                     <?php endif; ?>
+                                                    
                                                 </center>
                                             </td>
                                             <td>

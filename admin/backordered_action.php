@@ -25,7 +25,7 @@ if ($count < $purchaseQuantity) {
 
 } else {
 	// mysqli_query($conn, "UPDATE purchase_final set status = 1 WHERE id='$id' ");
-	mysqli_query($conn, "UPDATE product set product_qty= product_qty-$purchaseQuantity where productid='$prodId'");
+	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$purchaseQuantity where productid='$prodId'");
 }
 
 ?>

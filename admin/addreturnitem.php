@@ -71,7 +71,7 @@
 
     if($type == 2) {
         
-        $refund_qty = (int)$product_quantity + (int)$quantity;
+        $refund_qty = (int)$product_quantity - (int)$quantity;
 
           /*inventories*/
         mysqli_query($conn,"update product set product_qty='$refund_qty' where productid='$id'");
