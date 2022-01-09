@@ -21,7 +21,7 @@ if ($count < $purchaseQuantity) {
 
     mysqli_query($conn, "UPDATE backorder set quantity= quantity-$count where backid='$id'");
 
-	mysqli_query($conn, "UPDATE product set product_qty= product_qty-$count where productid='$prodId'");
+	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$count where productid='$prodId'");
 
 } else {
 	// mysqli_query($conn, "UPDATE purchase_final set status = 1 WHERE id='$id' ");

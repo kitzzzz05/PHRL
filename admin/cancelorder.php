@@ -3,10 +3,8 @@
 	
 	$id=$_GET['id'];
 
+    mysqli_query($conn,"update purchase_final set status='2', total_purchase = '0' where id='$id'");
 
-	
-	mysqli_query($conn,"UPDATE final_purchase set status=3 where purchase_id='$id'");
-	
 	?>
 		<script>
 			window.alert('Cancel ordered successfully!');
