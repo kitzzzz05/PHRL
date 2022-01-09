@@ -6,23 +6,33 @@
 if (isset($_POST['submit'])) {
 
 	$barcodeid = $_POST['prodid'];
+	$quantity = $_POST['quantity'];
 
 	$query = mysqli_query($conn, "SELECT * from product WHERE productid = '$barcodeid'");
 	$row = mysqli_fetch_array($query);
 	$prodName = $row['product_name'];
 	$price =  $row['product_price'];
 	$prodid = $row['productid'];
-	$quantity = $_POST['quantity'];
+	$quants = $row['product_qty'];
 
-	$query2 = mysqli_query($conn, "SELECT * from dummy_cart WHERE product_id = '$prodid'");
-	$row2 = mysqli_fetch_array($query2);
-
-	if ($row2 > 0) {
-
-		mysqli_query($conn, "update dummy_cart set quantity = quantity +'$quantity' where product_id = '$prodid'");
+	if ($quantity > $quants) {
+?>
+		<script>
+			alert('Insufficient Stocks')
+		</script>
+<?php
 	} else {
-		mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
+		$query2 = mysqli_query($conn, "SELECT * from dummy_cart WHERE product_id = '$prodid'");
+		$row2 = mysqli_fetch_array($query2);
+
+
+		if ($row2 > 0) {
+
+			mysqli_query($conn, "update dummy_cart set quantity = quantity +'$quantity' where product_id = '$prodid'");
+		} else {
+			mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
 		VALUES ('$prodid','$prodName','$price','$quantity')");
+		}
 	}
 }
 ?>
@@ -80,7 +90,7 @@ if (isset($_POST['submit'])) {
 							<table style="width:85%" class="table">
 								<thead>
 									<th></th>
-									<th>Order Id</th>	
+									<th>Order Id</th>
 									<th>Product Name</th>
 									<th>Product Price</th>
 									<th>Purchase Qty</th>
@@ -96,7 +106,7 @@ if (isset($_POST['submit'])) {
 										<tr>
 											<td><a class="btn btn-info btn-sm" href="del_product.php?id=<?php echo $row['id']; ?>">
 													<span class="glyphicon glyphicon-trash"></span> Remove </a></td>
-													<td><?php echo $row['id']; ?></td>
+											<td><?php echo $row['id']; ?></td>
 											<td><?php echo $row['product_name']; ?></td>
 											<td><?php echo number_format($row['product_price'], 2); ?></td>
 											<td><a class="btn btn-warning btn-sm minus_qty2" href="minus_product.php?id=<?php echo $row['id']; ?>"><i class="fa fa-minus fa-fw"></i></a>
@@ -122,13 +132,11 @@ if (isset($_POST['submit'])) {
 									<td><input type="text" class="form-control" id="total_pay" value="<?php echo $total ?>" readonly></td>
 
 									<td>Payment Amount</td>
-									<form role="form" method="POST" action="payment.php">
-										<td><input type="text" class="form-control" id="amount_pay" oninput="getChange()" required>
-										</td>
-										<td><button class="btn btn-success" id="paybutton" disabled><i class="fa fa-shopping-cart" disabled></i>Pay</button>
-									</form>
-
-
+									<!-- <form role="form" method="POST" action="payment.php"> -->
+									<td><input type="text" class="form-control" id="amount_pay" oninput="getChange()" required>
+									</td>
+									<td><button class="btn btn-success" id="paybutton" onclick="confirm_cart()" disabled><i class="fa fa-shopping-cart" disabled></i>Pay</button>
+										<!-- </form> -->
 									</td>
 									</td>
 									</tr>
@@ -137,12 +145,8 @@ if (isset($_POST['submit'])) {
 									<tr>
 										<td>Change</td>
 										<td><input type="text" class="form-control" id="change_pay" readonly></td>
-										<td> <span id = "message" style="color:red"> </span></td>
+										<td> <span id="message" style="color:red"> </span></td>
 										<td>
-											<a onclick="getUrl(<?php echo $total ?>)">
-												<button class="btn btn-default" id="print" disabled>
-													<i class="fa fa-print"></i> Print
-												</button></a>
 										</td>
 
 									</tr>
@@ -152,6 +156,34 @@ if (isset($_POST['submit'])) {
 					</div>
 
 				</div>
+				<div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+							</div>
+							<div class="modal-body">
+
+								<form role="form" method="POST" action="payment.php">
+									<center>
+										<h3>Confirm Purchase?</h3>
+									</center>
+									<br>
+									<center>
+										<button type="submit" class="btn btn-success" onclick="getUrl(<?php echo $total ?>)"><i class="fa fa-check-square-o"></i> Confirm</button>
+										<button type="button" class="btn btn-default" data-dismiss="modal" ><i class="fa fa-times"></i> Cancel</button>
+
+									</center>
+
+
+								</form>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
 
 
 			</div>
@@ -175,25 +207,30 @@ if (isset($_POST['submit'])) {
 					var second_number = parseFloat(text2.value);
 					if (isNaN(second_number)) second_number = 0;
 					var result = second_number - first_number;
-					if(result < 0){
+					if (result < 0) {
 						result = "";
-						document.getElementById("message").innerHTML = "Insufficient Pay";  
-						document.getElementById("change_pay").value = result;
-				
-					}else{
-						document.getElementById("message").innerHTML = "";  
+						document.getElementById("message").innerHTML = "Insufficient Pay";
 						document.getElementById("change_pay").value = result;
 
-						if (document.getElementById("change_pay").value =="") {
-						
-					}else{
-						document.getElementById("paybutton").disabled = false;
-						document.getElementById("print").disabled = false;
-					}
-					}
+					} else {
+						document.getElementById("message").innerHTML = "";
+						document.getElementById("change_pay").value = result;
 
-				
-					
+						if (document.getElementById("change_pay").value == "") {
+
+						} else {
+							document.getElementById("paybutton").disabled = false;
+							document.getElementById("print").disabled = false;
+						}
+					}
+				}
+			</script>
+
+
+			<script>
+				function confirm_cart() {
+					$('#confirm-type').val('confirmCart');
+					$('#modal-confirmation').modal('show');
 
 				}
 			</script>

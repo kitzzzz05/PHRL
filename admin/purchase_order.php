@@ -87,11 +87,8 @@
                                             <td colspan="5"><span class="pull-right"></td>
 
                                             <td><strong>
-                                                    <a href="processorder.php"><button class="btn btn-success" id="order" disabled>Process</button></a>
-                                                    <a href="testprint.php" target="_blank">
-                                                        <button class="btn btn-default" id="print" disabled>
-                                                            <i class="fa fa-print"></i> Print
-                                                        </button></a>
+                                                    <a><button class="btn btn-success" id="order" onclick="confirm_cart()" disabled>Process</button></a>
+                                                   
                                             </td>
                                         </tr>
 
@@ -103,6 +100,34 @@
                     </div>
 
 
+                </div>
+
+                <div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+
+                                <form role="form" method="POST" action="processorder.php">
+                                    <center>
+                                        <h3>Confirm Purchase?</h3>
+                                    </center>
+                                    <br>
+                                    <center>
+                                        <button type="submit" class="btn btn-success" onclick="getPrint()"><i class=" fa fa-check-square-o"></i> Confirm</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+
+                                    </center>
+
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div class="modal fade" id="modal-lgg" style="display: none;" aria-hidden="true">
@@ -169,6 +194,19 @@
 
 </html>
 
+<script>
+    function confirm_cart() {
+        $('#confirm-type').val('confirmCart');
+        $('#modal-confirmation').modal('show');
+
+    }
+
+    function getPrint() {
+
+        
+        window.open('testprint.php', '_blank');
+    }
+</script>
 
 
 <script>

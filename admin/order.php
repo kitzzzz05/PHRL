@@ -94,7 +94,7 @@
 
                                 } else {
                                     $sq = mysqli_query($conn, "SELECT * FROM purchase_final a join product b on b.productid=a.product_id
-                                    join supplier c on c.userid=b.supplierid  ORDER by a.date asc");
+                                    join supplier c on c.userid=b.supplierid  ORDER by id asc");
                                     while ($sqrow = mysqli_fetch_array($sq)) {
                                         $pid = $sqrow['id'];
                                     ?>
@@ -123,7 +123,7 @@
                                                     <?php echo $sqrow['quantity_purchase']; ?></center>
                                             </td>
                                             <td>
-                                                <center><?php echo date('M d, Y h:i A', strtotime($sqrow['date'])); ?></center>
+                                                <center><?php echo date('M d, Y ', strtotime($sqrow['date'])); ?></center>
                                             </td>
 
                                             <td>

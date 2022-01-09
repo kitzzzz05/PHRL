@@ -13,28 +13,35 @@ if ($row2 > 0) {
 
 	mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
 		VALUES ('$prodid','$prodName','$price',1)");
-
 } else {
 	$query = mysqli_query($conn, "SELECT * from product WHERE product_name = '$barcodeid'");
 	$row = mysqli_fetch_array($query);
 	$prodName = $row['product_name'];
 	$price =  $row['product_price'];
 	$prodid = $row['productid'];
+	$prodid = $row['productid'];
 	$quantity = $_POST['quantity'];
+	$quants = $row['product_qty'];
 
-	$query2 = mysqli_query($conn, "SELECT * from dummy_cart WHERE product_id = '$prodid'");
-	$row2 = mysqli_fetch_array($query2);
-
-	if ($row2 > 0) {
-
-		mysqli_query($conn, "update dummy_cart set quantity = quantity +'$quantity' where product_id = '$prodid'");
+	if ($quantity > $quants) {
+?>
+		<script>
+			window.alert('Insufficient Stocks!');
+			window.history.back();
+		</script>
+<?php
+		
 	} else {
-		mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
+		$query2 = mysqli_query($conn, "SELECT * from dummy_cart WHERE product_id = '$prodid'");
+		$row2 = mysqli_fetch_array($query2);
+
+		if ($row2 > 0) {
+
+			mysqli_query($conn, "update dummy_cart set quantity = quantity +'$quantity' where product_id = '$prodid'");
+		} else {
+			mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
 		VALUES ('$prodid','$prodName','$price','$quantity')");
+		}
+		header('location:pos.php');
 	}
 }
-
-
-
-
-header('location:pos.php');
