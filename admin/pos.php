@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
 	$barcodeid = $_POST['prodid'];
 	$quantity = $_POST['quantity'];
 
-	$query = mysqli_query($conn, "SELECT * from product WHERE productid = '$barcodeid'");
+	$query = mysqli_query($conn, "SELECT * from product WHERE barcode_id = '$barcodeid'");
 	$row = mysqli_fetch_array($query);
 	$prodName = $row['product_name'];
 	$price =  $row['product_price'];

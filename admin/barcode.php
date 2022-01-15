@@ -1,3 +1,6 @@
+<?php include('session.php') ?>;
+
+
 <html>
 <head>
 <style>
@@ -18,11 +21,13 @@ span { font-size: 13px;}
 		<?php
 		include 'barcode128.php';
 		$product = $_POST['user_id'];
-		$product_id = $_POST['first_name'];
 		$rate = $_POST['last_name'];
+		$prodid = $_POST['first_name'];
+		$barcodeid = $_POST['barcode_id'];
+		mysqli_query($conn,"UPDATE product set barcode_id  = '$barcodeid' WHERE productid='$prodid'");
 
 		for($i=1;$i<=$_POST['print_qty'];$i++){
-			echo "<p class='inline'><span ><b>Item: $product_id </b></span>".bar128(stripcslashes($product))."<span ><b>Price: ".$rate." </b><span></p>&nbsp&nbsp&nbsp&nbsp";
+			echo "<p class='inline'><span ><b>Item: $product</b></span>".bar128(stripcslashes($_POST['barcode_id']))."<span ><b>Price: ".$rate." </b><span></p>&nbsp&nbsp&nbsp&nbsp";
 		}
 
 		?>
