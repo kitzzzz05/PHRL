@@ -434,25 +434,25 @@ if (isset($_GET['code'])) {
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Pilo D716</div>
-                    <img src="design/1.jpg" alt="House" style="width:100%">
+                    <img src="design/1.jpg" alt="House" style="width:100%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Water Proof Mount</div>
-                    <img src="design/2.jpg" alt="House" style="width:100%">
+                    <img src="design/2.jpg" alt="House" style="width:100%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Sealed MTB Road</div>
-                    <img src="design/3.jpg" alt="House" style="width:100%">
+                    <img src="design/3.jpg" alt="House" style="width:100%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Lubricating Oil</div>
-                    <img src="design/4.jpg" alt="House" style="width:100%">
+                    <img src="design/4.jpg" alt="House" style="width:100%;height:250px">
                 </div>
             </div>
         </div>
@@ -461,25 +461,25 @@ if (isset($_GET['code'])) {
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Black Cat Inner Tube</div>
-                    <img src="design/5.jpg" alt="House" style="width:99%">
+                    <img src="design/5.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Seat</div>
-                    <img src="design/6.jpg" alt="House" style="width:99%">
+                    <img src="design/6.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Chain</div>
-                    <img src="design/7.jpg" alt="House" style="width:99%">
+                    <img src="design/7.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Chain</div>
-                    <img src="design/8.jpg" alt="House" style="width:99%">
+                    <img src="design/8.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
         </div>
@@ -496,28 +496,28 @@ if (isset($_GET['code'])) {
 
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
-                <img src="design/forkinstallation.png" style="width:100%; height:100%;">
+                <img src="design/forkinstallation.png" style="width:100%;;height:250px">
                 <h3>FORK INSTALLATION</h3>
                 <p class="w3-opacity">Bike Parts</p>
                 <p>Each fork must be cut specifically according to the frame size (headset height) and the handling preferences (number of spacers to install below the stem). Especially when dealing with a new bike, it’s suggested to cut the tube leaving a slight margin, and place some extra spacers above and below the stem. This way you can test different handling characteristics by adjusting the handlebar position according to your preferences. Once you’ve found the ideal configuration, you can proceed with the final cut of the steerer tube.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
-                <img src="design/headsetclearing.jpg" style="width:100%; height:100%;">
+                <img src="design/headsetclearing.jpg" style="width:100%;;height:250px">
                 <h3>HEADSET CLEARING</h3>
                 <p class="w3-opacity">HEAD</p>
                 <p>Bounce the front wheel off the ground a few times: a rattling sound indicates the headset is loose. If the bars lock in the middle and point straight then it’s either too tight or the bearings are heavily worn. Holding the front wheel or frame between your legs, with the bars as leverage, carefully place a 32mm headset wrench over the locknut and turn anticlockwise</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
-                <img src="design/grpset.jpg" alt="Mike" style="width:100%; height:100%;">
+                <img src="design/grpset.jpg" alt="Mike" style="width:100%;;height:250px">
                 <h3>CHANGE GROUP SET</h3>
                 <p class="w3-opacity">Bike Set</p>
                 <p>These are probably the first thing you would look to upgrade. So for instance is you are running a 105 Groupset you can always upgrade to a Ultegra crankset. They are much lighter, so can save quite a bit of weight. You can keep your existing 105 levers and even chain and cassette if you like. But just remember that if your chain and cassette are very old and are wearing out, by putting a new chainsets on it may not run 100% right. This is simply because mixing old with new tends to cause chain suck or slipping.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
-                <img src="design/chghub.jpg" alt="Dan" style="width:100%; height:100%;">
+                <img src="design/chghub.jpg" alt="Dan" style="width:100%;;height:250px">
                 <h3>CHANGE HUB</h3>
                 <p class="w3-opacity">Bike Hub</p>
                 <p>The hub is the metal tube going through the middle of the wheel that houses the moving parts. Installing a completely new hub

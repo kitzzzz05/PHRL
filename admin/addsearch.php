@@ -13,6 +13,8 @@ if ($row2 > 0) {
 
 	mysqli_query($conn, "INSERT into dummy_cart (product_id, product_name, product_price, quantity)
 		VALUES ('$prodid','$prodName','$price',1)");
+		
+header('location:pos.php');
 } else {
 	$query = mysqli_query($conn, "SELECT * from product WHERE product_name = '$barcodeid'");
 	$row = mysqli_fetch_array($query);
