@@ -21,10 +21,13 @@
 		<div style="height: 10px;"></div>
 		Password: <input type="password" name="password" class="form-control" required>
 		<div style="height: 10px;"></div>
-		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
-		<span class="pull-right">
-		<a data-toggle="modal" data-target="#register"><i ></i>Register</a>
+
+		<span class="center">
+		<i>       Already have an account?  </i><a data-toggle="modal"  data-target="#register">    Sign Up</a>
 		</span>
+		<br><br>
+		
+		<center><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button></center>
 		</form>
 		<div style="height: 15px;"></div>
 		<div style="color: red; font-size: 15px;">

@@ -26,7 +26,7 @@
                             <center>Quantity : <input type="number" style="width:50px;" class="no-outline" name="quantity" min="1" max="<?= $b['quantity_purchase'] ?>" required><strong><?php echo '/ ' . $b['quantity_purchase']; ?></strong></center>
                         </h5>
                         <h5>
-                            <center>Selling Price : <input type="text" style="width:70px;" class="no-outline" name="price" value="<?php echo number_format($b['product_price'], 2);?>" required></center>
+                            <center>Mark Up : <input type="text" style="width:70px;" class="no-outline" name="price" value="<?php echo number_format($b['product_price'], 2);?>" required></center>
                         </h5>
                        
                 </div>

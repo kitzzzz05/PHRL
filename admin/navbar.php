@@ -117,7 +117,7 @@ $access = $srow['access'];
                                 <a href="product.php">Products</a>
                             </li>
                             <li>
-                                <a href="category.php"></i> Category</a>
+                                <a href="category.php"></i> Product Line</a>
                             </li>
                             <li>
                                 <a href="generatebarcode.php"></i> Generate Barcode</a>
@@ -140,7 +140,7 @@ $access = $srow['access'];
                                 <a href="inventory_report.php"> Inventory Report</a>
                             </li>
                             <li>
-                                <a href="inventory.php"> Inventory Logs Report</a>
+                                <a href="inventory.php"> Audit Trails </a>
                             </li>
                         </ul>
                     </li>
@@ -169,10 +169,10 @@ $access = $srow['access'];
                         <ul class="nav nav-second-level">
                             <li>
                             <li>
-                                <a href="user.php"></i> User</a>
+                                <a href="user.php"></i> User Accounts</a>
                             </li>
                             <li>
-                                <a href="database.php"></i> Database Backup</a>
+                                <a href="database.php"></i> Backup and Restore</a>
                             </li>
 
                     </li>
