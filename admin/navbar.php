@@ -144,7 +144,11 @@ $access = $srow['access'];
                             </li>
                         </ul>
                     </li>
+                    
+                    <?php }
+                    if($access == 1 || $access == 3) {?>
                     <li>
+                        
                         <a href="#"><i class="fa fa-copy fa-fw"></i>Order<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -164,7 +168,10 @@ $access = $srow['access'];
                             </li>
                         </ul>
                     </li>
-                    <li>
+                    <?php
+                } 
+                 if($access==1){ ?>
+                 <li>
                         <a href="#">Master Files<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -185,8 +192,8 @@ $access = $srow['access'];
 
             </ul>
             </li>
-        <?php
-                } ?>
+            <?php } ?>
+       
         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
         </ul>
         </div>
