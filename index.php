@@ -112,7 +112,7 @@ if (isset($_GET['code'])) {
     // Get login url
     $facebook_permissions = ['email']; // Optional permissions
 
-    $facebook_login_url = $facebook_helper->getLoginUrl('http://localhost/inventory3/user/test.php', $facebook_permissions);
+    $facebook_login_url = $facebook_helper->getLoginUrl('http://127.0.0.1:3307/inventory3/user/test.php', $facebook_permissions);
 
     // Render Facebook login button
     $facebook_login_url = '<a href="' . $facebook_login_url . '" class="fb btn">Login with <i class="fa fa-facebook fa-fw"></i>
@@ -155,8 +155,8 @@ if (isset($_GET['code'])) {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                
+                    <span class="icon-bar"></span>
+                </button> 
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -166,7 +166,8 @@ if (isset($_GET['code'])) {
                     </div>
                     <ul class="nav navbar-nav navbar-left navBar">
                         <li class="nav-item"> <a href="#product" class="w3-bar-item w3-button">Product</a></li>
-                        <li class="nav-item"> <a href="#about" class="w3-bar-item w3-button">About & Services</a></li>
+                        <li class="nav-item"> <a href="#services" class="w3-bar-item w3-button">Services</a></li>
+                        <li class="nav-item"> <a href="#about" class="w3-bar-item w3-button">About</a></li>
                     </ul>
                     <!-- <li><a href="adminlogin.php">Admin</a></li> -->
                     <li><a href="#" data-toggle="modal" data-target="#myModal">Sign Up</a></li>
@@ -188,7 +189,9 @@ if (isset($_GET['code'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only" for="password">Password</label>
-                                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                                <input type="password" value = " "class="form-control" name="password" placeholder="Password" required value = "" id ="myInput">
+                                                <input type="checkbox" onclick="myFunction()"> Show Password
+                                                <a href="forgot.php" class="forgot" style="text-align: center;"><center>Forgot Password?</center></a>
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" name="login" id="login" class="btn btn-primary btn-block">Sign in</button>
@@ -251,18 +254,18 @@ if (isset($_GET['code'])) {
                                         <div class="col-xs-4 col-md-4">
                                             <select name="month" class="form-control input-lg" required>
                                                 <option value="">Month</option>
-                                                <option value="01">Jan</option>
-                                                <option value="02">Feb</option>
-                                                <option value="03">Mar</option>
-                                                <option value="04">Apr</option>
+                                                <option value="01">January</option>
+                                                <option value="02">February</option>
+                                                <option value="03">March</option>
+                                                <option value="04">April</option>
                                                 <option value="05">May</option>
-                                                <option value="06">Jun</option>
-                                                <option value="07">Jul</option>
-                                                <option value="08">Aug</option>
-                                                <option value="09">Sep</option>
-                                                <option value="10">Oct</option>
-                                                <option value="11">Nov</option>
-                                                <option value="12">Dec</option>
+                                                <option value="06">June</option>
+                                                <option value="07">July</option>
+                                                <option value="08">August</option>
+                                                <option value="09">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
                                             </select>
                                         </div>
                                         <div class="col-xs-4 col-md-4">
@@ -304,6 +307,44 @@ if (isset($_GET['code'])) {
                                         <div class="col-xs-4 col-md-4">
                                             <select name="year" class="form-control input-lg" required>
                                                 <option value="">Year</option>
+                                                <option value="1950">1950</option>
+                                                <option value="1951">1951</option>
+                                                <option value="1952">1952</option>
+                                                <option value="1953">1953</option>
+                                                <option value="1954">1954</option>
+                                                <option value="1955">1955</option>
+                                                <option value="1956">1956</option>
+                                                <option value="1957">1957</option>
+                                                <option value="1958">1958</option>
+                                                <option value="1959">1959</option>
+                                                <option value="1960">1960</option>
+                                                <option value="1961">1961</option>
+                                                <option value="1962">1962</option>
+                                                <option value="1963">1963</option>
+                                                <option value="1964">1964</option>
+                                                <option value="1965">1965</option>
+                                                <option value="1966">1966</option>
+                                                <option value="1967">1967</option>
+                                                <option value="1968">1968</option>
+                                                <option value="1969">1969</option>
+                                                <option value="1970">1970</option>
+                                                <option value="1971">1971</option>
+                                                <option value="1972">1972</option>
+                                                <option value="1973">1973</option>
+                                                <option value="1974">1974</option>
+                                                <option value="1975">1975</option>
+                                                <option value="1976">1976</option>
+                                                <option value="1977">1977</option>
+                                                <option value="1978">1978</option>
+                                                <option value="1979">1979</option>
+                                                <option value="1980">1980</option>
+                                                <option value="1981">1981</option>
+                                                <option value="1982">1982</option>
+                                                <option value="1983">1983</option>
+                                                <option value="1984">1984</option>
+                                                <option value="1985">1985</option>
+                                                <option value="1986">1986</option>
+                                                <option value="1987">1987</option>
                                                 <option value="1988">1988</option>
                                                 <option value="1989">1989</option>
                                                 <option value="1990">1990</option>
@@ -330,6 +371,7 @@ if (isset($_GET['code'])) {
                                                 <option value="2011">2011</option>
                                                 <option value="2012">2012</option>
                                                 <option value="2013">2013</option>
+                                                <option value="2014">2014</option>
                                             </select>
                                         </div>
                                     </div>
@@ -358,7 +400,7 @@ if (isset($_GET['code'])) {
     <!-- modal container end -->
 
     <!-- 1st section start -->
-    <section id="promo-1" class="content-block promo-1 min-height-600px bg-offwhite">
+    <section id="promo-1" class="content-block promo-1 min-height-600px bg-offwhite">      
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
@@ -422,10 +464,12 @@ if (isset($_GET['code'])) {
             <!-- /.row -->
         </div>
     </section>
+    
     <div class="w3-content w3-padding" style="max-width:1564px">
 
         <!-- Project Section -->
         <!-- Project Section -->
+
         <div class="w3-container w3-padding-32" id="product">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Products</h3>
         </div>
@@ -434,25 +478,41 @@ if (isset($_GET['code'])) {
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Pilo D716</div>
+<<<<<<< Updated upstream
                     <img src="design/1.jpg" alt="House" style="width:100%;height:250px">
+=======
+                    <img src="design/1.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Water Proof Mount</div>
+<<<<<<< Updated upstream
                     <img src="design/2.jpg" alt="House" style="width:100%;height:250px">
+=======
+                    <img src="design/2.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Sealed MTB Road</div>
+<<<<<<< Updated upstream
                     <img src="design/3.jpg" alt="House" style="width:100%;height:250px">
+=======
+                    <img src="design/3.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Lubricating Oil</div>
+<<<<<<< Updated upstream
                     <img src="design/4.jpg" alt="House" style="width:100%;height:250px">
+=======
+                    <img src="design/4.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -461,63 +521,88 @@ if (isset($_GET['code'])) {
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Black Cat Inner Tube</div>
+<<<<<<< Updated upstream
                     <img src="design/5.jpg" alt="House" style="width:99%;height:250px">
+=======
+                    <img src="design/5.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Seat</div>
+<<<<<<< Updated upstream
                     <img src="design/6.jpg" alt="House" style="width:99%;height:250px">
+=======
+                    <img src="design/6.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Chain</div>
+<<<<<<< Updated upstream
                     <img src="design/7.jpg" alt="House" style="width:99%;height:250px">
+=======
+                    <img src="design/7.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
                     <div class="w3-display-topleft w3-black w3-padding">Bike Chain</div>
+<<<<<<< Updated upstream
                     <img src="design/8.jpg" alt="House" style="width:99%;height:250px">
+=======
+                    <img src="design/8.jpg" alt="House" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
-        <div class="w3-container w3-padding-32" id="about">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-            <p>PHRL Bicycle Parts store started selling various bicycle parts at the beginning of 2021 and still pursuing to distribute quality and affordable items that every cyclist needs. Our store also provides online services like reservation of an appointment for the assembling and repairing services that we offer, allowing customers to book their preferred date and time and assist them with our skilled and best bike mechanics..
-            </p>
-            <p>CONTACT US</p>
-            <a class="fa fa-phone" style="font-size:20px"></a>&nbsp; by Phone +6392067542174</br>
-            <a href="https://mail.google.com/mail/u/0/#search/phrlbicyclepartstore%40gmail.com?compose=new" class="fa fa-google" style="font-size:20px" target="_blank"></a>&nbsp;by Email <a href="https://mail.google.com/mail/u/0/#search/phrlbicyclepartstore%40gmail.com?compose=new" target="_blank">phrlbicyclepartstore@gmail.com</a></br>
-            <a href="https://www.facebook.com/PhrlBicyclePartsStore" target="_blank" class="fa fa-facebook" style="font-size:20px"> </a> &nbsp;by our official Facebook Page <a href="https://www.facebook.com/PhrlBicyclePartsStore" target="_blank">PhrlBicylePartsStore</a></li>
 
+        <div class="w3-container w3-padding-32" id="services">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Services</h3>
         </div>
-
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
+<<<<<<< Updated upstream
                 <img src="design/forkinstallation.png" style="width:100%;;height:250px">
+=======
+                <img src="design/forkinstallation.png" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 <h3>FORK INSTALLATION</h3>
                 <p class="w3-opacity">Bike Parts</p>
                 <p>Each fork must be cut specifically according to the frame size (headset height) and the handling preferences (number of spacers to install below the stem). Especially when dealing with a new bike, it’s suggested to cut the tube leaving a slight margin, and place some extra spacers above and below the stem. This way you can test different handling characteristics by adjusting the handlebar position according to your preferences. Once you’ve found the ideal configuration, you can proceed with the final cut of the steerer tube.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
+<<<<<<< Updated upstream
                 <img src="design/headsetclearing.jpg" style="width:100%;;height:250px">
+=======
+                <img src="design/headsetclearing.jpg" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 <h3>HEADSET CLEARING</h3>
                 <p class="w3-opacity">HEAD</p>
                 <p>Bounce the front wheel off the ground a few times: a rattling sound indicates the headset is loose. If the bars lock in the middle and point straight then it’s either too tight or the bearings are heavily worn. Holding the front wheel or frame between your legs, with the bars as leverage, carefully place a 32mm headset wrench over the locknut and turn anticlockwise</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
+<<<<<<< Updated upstream
                 <img src="design/grpset.jpg" alt="Mike" style="width:100%;;height:250px">
+=======
+                <img src="design/grpset.jpg" alt="Mike" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 <h3>CHANGE GROUP SET</h3>
                 <p class="w3-opacity">Bike Set</p>
                 <p>These are probably the first thing you would look to upgrade. So for instance is you are running a 105 Groupset you can always upgrade to a Ultegra crankset. They are much lighter, so can save quite a bit of weight. You can keep your existing 105 levers and even chain and cassette if you like. But just remember that if your chain and cassette are very old and are wearing out, by putting a new chainsets on it may not run 100% right. This is simply because mixing old with new tends to cause chain suck or slipping.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
+<<<<<<< Updated upstream
                 <img src="design/chghub.jpg" alt="Dan" style="width:100%;;height:250px">
+=======
+                <img src="design/chghub.jpg" alt="Dan" style="width:100%; height :250px">
+>>>>>>> Stashed changes
                 <h3>CHANGE HUB</h3>
                 <p class="w3-opacity">Bike Hub</p>
                 <p>The hub is the metal tube going through the middle of the wheel that houses the moving parts. Installing a completely new hub
@@ -534,16 +619,58 @@ if (isset($_GET['code'])) {
 
         </section>
         <!-- forth section end -->
-
-        <!-- footer start -->
-        
-        <!-- footer end -->
-    </div>
-    <div class="copyright-bar bg-black">
-            <div class="container">
-                <!-- <p class="pull-right small"><a href="admin/">admin</a></p> -->
-            </div>
+        <div class="w3-container w3-padding-32" id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"></h3>
         </div>
+         <!-- Site footer -->
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h6 style="color:#FF0000;">About</h6>
+            <p><i>PHRL Bicycle Parts store</i> started selling various bicycle parts at the beginning of 2021 and still pursuing to distribute quality and affordable items that every cyclist needs. Our store also provides online services like reservation of an appointment for the assembling and repairing services that we offer, allowing customers to book their preferred date and time and assist them with our skilled and best bike mechanics..</p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+          <h6 style="color:#FF0000;">Contact Us</h6>
+
+          <li class = "fa fa-map-marker"></i> <p> Blk 2 Lot 33 Mainroad Maryhomes Subdivision <span> Molino IV 4012 Bacoor, Philipphines.</span></p>
+          <li class = "fa fa-phone"></i> <p><b>+6992.8222.3002</b></p>
+          <li class = "fa fa-envelope"></i><p><a href="https://mail.google.com/mail/u/0/#search/phrlbicyclepartstore%40gmail.com?compose=new">phrlbicyclepartsstore@gmal.com</a></p>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6 style="color:#FF0000;">Quick Links</h6>
+            <ul class="footer-links">
+              <li><a href="http://localhost:8080/phrl/">About Us</a></li>
+              <li><a href="https://www.facebook.com/PhrlBicyclePartsStore">Contact Us</a></li>
+              <li><a href="file:///C:/Users/BLANK/Desktop/Privacy.html">Privacy Policy</a></li>
+              <li><a href="https://www.google.com/maps/place/Sta+monica+st/@14.3722757,120.9770042,17z/data=!3m1!4b1!4m5!3m4!1s0x3397d3fb332b69c7:0xfc3b5dfd7d2dc504!8m2!3d14.3722306!4d120.9792417/">Location</a></li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
+         <a href="#">PHRLBICYCLEPARTSTORE</a>.
+            </p>
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="https://www.facebook.com/PhrlBicyclePartsStore"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="twitter" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="google" href="https://mail.google.com/mail/u/0/#search/phrlbicyclepartstore%40gmail.com?compose=new"><i class="fa fa-google"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</footer>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/date/bootstrap-datepicker.js"></script>
@@ -603,6 +730,16 @@ if (isset($_GET['code'])) {
   }
 } 
 </script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 
 
     <style type="text/css">
@@ -617,6 +754,167 @@ if (isset($_GET['code'])) {
             color: white;
             width: 100%;
         }
+
+        .site-footer
+        {
+        background-color:#26272b;
+        padding:45px 0 20px;
+        font-size:15px;
+        line-height:24px;
+        color:#737373;
+        }
+        .site-footer hr
+        {
+        border-top-color:#bbb;
+        opacity:0.5
+        }
+        .site-footer hr.small
+        {
+        margin:20px 0
+        }
+        .site-footer h6
+        {
+        color:#fff;
+        font-size:16px;
+        text-transform:uppercase;
+        margin-top:5px;
+        letter-spacing:2px
+        }
+        .site-footer a
+        {
+        color:#737373;
+        }
+        .site-footer a:hover
+        {
+        color:#3366cc;
+        text-decoration:none;
+        }
+        .footer-links
+        {
+        padding-left:0;
+        list-style:none
+        }
+        .footer-links li
+        {
+        display:block
+        }
+        .footer-links a
+        {
+        color:#737373
+        }
+        .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+        {
+        color:#3366cc;
+        text-decoration:none;
+        }
+        .footer-links.inline li
+        {
+        display:inline-block
+        }
+        .site-footer .social-icons
+        {
+        text-align:right
+        }
+        .site-footer .social-icons a
+        {
+        width:40px;
+        height:40px;
+        line-height:40px;
+        margin-left:6px;
+        margin-right:0;
+        border-radius:100%;
+        background-color:#33353d
+        }
+        .copyright-text
+        {
+        margin:0
+        }
+        @media (max-width:991px)
+        {
+        .site-footer [class^=col-]
+        {
+            margin-bottom:50px
+        }
+        }
+        @media (max-width:767px)
+        {
+        .site-footer
+        {
+            padding-bottom:0
+        }
+        .site-footer .copyright-text,.site-footer .social-icons
+        {
+            text-align:center
+        }
+        }
+        .social-icons
+        {
+        padding-left:0;
+        margin-bottom:0;
+        list-style:none
+        }
+        .social-icons li
+        {
+        display:inline-block;
+        margin-bottom:4px
+        }
+        .social-icons li.title
+        {
+        margin-right:15px;
+        text-transform:uppercase;
+        color:#96a2b2;
+        font-weight:700;
+        font-size:13px
+        }
+        .social-icons a{
+        background-color:#eceeef;
+        color:#818a91;
+        font-size:16px;
+        display:inline-block;
+        line-height:44px;
+        width:44px;
+        height:44px;
+        text-align:center;
+        margin-right:8px;
+        border-radius:100%;
+        -webkit-transition:all .2s linear;
+        -o-transition:all .2s linear;
+        transition:all .2s linear
+        }
+        .social-icons a:active,.social-icons a:focus,.social-icons a:hover
+        {
+        color:#fff;
+        background-color:#29aafe
+        }
+        .social-icons.size-sm a
+        {
+        line-height:34px;
+        height:34px;
+        width:34px;
+        font-size:14px
+        }
+        .social-icons a.facebook:hover
+        {
+        background-color:#3b5998
+        }
+        .social-icons a.twitter:hover
+        {
+        background-color:#00aced
+        }
+        .social-icons a.google:hover
+        {
+        background-color:	#FF0000
+        }
+        @media (max-width:767px)
+        {
+        .social-icons li.title
+        {
+            display:block;
+            margin-right:0;
+            font-weight:600
+        }
+        }
+        
     </style>
     <!-- date end -->
 
