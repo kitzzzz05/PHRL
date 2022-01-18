@@ -30,7 +30,7 @@
 	mysqli_query($conn,"INSERT into product (product_name,categoryid,photo,supplierid,date,about) VALUES ('$name','$category','$location','$supplier', NOW(),'$about')");
 	$pid=mysqli_insert_id($conn);
 	
-	mysqli_query($conn,"insert into inventory (userid, action, productid, quantity, inventory_date) values ('".$_SESSION['id']."', 'Add Product', '$pid', '0', NOW())");
+	mysqli_query($conn,"INSERT into inventory (userid, user, action, productid, quantity, inventory_date) values ('".$_SESSION['id']."','".$_SESSION['fullname']."','Add Product', '$pid', '0', NOW())");
 	
 	?>
 		<script>

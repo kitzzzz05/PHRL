@@ -202,8 +202,6 @@
     }
 
     function getPrint() {
-
-        
         window.open('testprint.php', '_blank');
     }
 </script>

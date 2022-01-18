@@ -4,8 +4,9 @@
 <?php
 
 
+date_default_timezone_set('Asia/Manila');
 $date = date("Y-m-d H:i");
-$datenow = date_format(new DateTime($date), "F d, Y");
+$datenow = date_format(new DateTime($date), "F d, Y H:i");
 $query = mysqli_query($conn, "SELECT a.*,b.* ,c.* from purchase a JOIN 
 product b on a.product_id = b.productid JOIN supplier c on b.supplierid = c.userid");
 
@@ -28,17 +29,21 @@ $row2 = mysqli_fetch_array($query);
             <tr>
               <td width="65%">
                 Name : <?php echo $row2['company_name'] ?><br />
-                Billing Address : <?php echo $row2['company_address'] ?><br />
+                Supplier Address : <?php echo $row2['company_address'] ?><br />
+                Order By : <?php echo $_SESSION['fullname'] ?><br />
               </td>
               <td width="35%">
                 Purchase Number: 0001PN<br />
                 Purchase Date : <?php echo $datenow ?><br />
+                
               </td>
             </tr>
           </table>
           <br />
           <table width="100%" cellpadding="5" cellspacing="0">
             <tr>
+              
+              <th align="left">Sales Id</th>
               <th align="left">Product Name</th>
               <th align="left">Item Name</th>
               <th align="left">Price</th>
@@ -55,7 +60,7 @@ $row2 = mysqli_fetch_array($query);
                   $prodId = $row['productid'];
                 ?>
                   <tr>
-
+                  <td><?php echo $row2['purcase_id']; ?></td>
                     <td><?php echo $row['product_name']; ?></td>
                     <td><?php echo $row['company_name']; ?></td>
                     <td><span><?php 
@@ -82,8 +87,8 @@ $row2 = mysqli_fetch_array($query);
 										<td></td>
 									</tr></tr>
                 <tr>
-										<td colspan="4"><span class="pull-right"><strong>Grand Total</strong></span></td>
-										<td><strong><span id="total"><?php echo number_format($total, 2); ?></span><strong></td>
+										<td colspan="5"><span class="pull-right"><strong>Grand Total</strong></span></td>
+										<td><strong><span id="total"><?php echo "₱ ".number_format($total, 2); ?></span><strong></td>
 									</tr>
         </td>
       </tr>

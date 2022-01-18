@@ -23,6 +23,7 @@
                         <th>Company Name</th>
 						<th>Address</th>
                         <th>Contact Info</th>
+						<th>Contact Person</th>
 						<th>Action</th>
                     </tr>
                 </thead>
@@ -35,6 +36,7 @@
 							<td><?php echo $sqrow['company_name']; ?></td>
 							<td><?php echo $sqrow['company_address']; ?></td>
 							<td><?php echo $sqrow['contact']; ?></td>
+							<td><?php echo $sqrow['person']; ?></td>
 							<td>
 								<button class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_<?php echo $sqrow['userid']; ?>"><i class="fa fa-edit"></i> Edit</button>
 								<button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#del_<?php echo $sqrow['userid']; ?>"><i class="fa fa-trash"></i> Delete</button>

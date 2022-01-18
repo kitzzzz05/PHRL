@@ -3,9 +3,9 @@
 
 <?php
 
-
+date_default_timezone_set('Asia/Manila');
 $date = date("Y-m-d H:i");
-$datenow = date_format(new DateTime($date), "F d, Y");
+$datenow = date_format(new DateTime($date), "F d, Y H:i");
 ?>
 
 
@@ -17,7 +17,7 @@ $datenow = date_format(new DateTime($date), "F d, Y");
 
 			<tr>
 				<td colspan="2" align="center" style="font-size:18px"> <img src="../LOGONAME.png" style="width:200px"></td>
-				></tr>
+				</tr>
 			
 			<tr>
 				<td colspan="2">
@@ -31,12 +31,14 @@ $datenow = date_format(new DateTime($date), "F d, Y");
 							<td width="35%">
 								Invoice Number: 0001<br />
 								Invoice Date : <?php echo $datenow ?><br />
+								Served By : <?php echo $_SESSION['fullname']?><br />
 							</td>
 						</tr>
 					</table>
 					<br />
 					<table width="100%" cellpadding="5" cellspacing="0">
 						<tr>
+						<th align="left">Sales Id</th>
 							<th align="left">Item Code</th>
 							<th align="left">Item Name</th>
 							<th align="left">Price</th>
@@ -50,6 +52,7 @@ $datenow = date_format(new DateTime($date), "F d, Y");
 								while ($row = mysqli_fetch_array($query)) {
 								?>
 									<tr>
+										<td><?php echo $row['id']; ?></td>
 										<td><?php echo $row['product_id']; ?></td>
 												
 										<td><?php echo $row['product_name']; ?></td>
@@ -82,11 +85,11 @@ $datenow = date_format(new DateTime($date), "F d, Y");
 						<tr>
 							
 							<td colspan="4"><span class="pull-right"><strong>Grand Total</strong></span></td>
-							<td><strong><span id="total"><?php echo number_format($total, 2); ?></span><strong></td>
+							<td><strong><span id="total"><?php echo "₱ ".number_format($total, 2); ?></span><strong></td>
 						</tr>
 						<tr>
 							<td colspan="4"><span class="pull-right"><strong>Payment Amount</strong></span></td>
-							<td><strong><span id="total"><?php echo number_format($_GET['prodid'], 2); ?></span><strong></td>
+							<td><strong><span id="total"><?php echo "₱ ".number_format($_GET['prodid'], 2); ?></span><strong></td>
 						</tr>
 						<tr>
 							<td colspan="4"><span class="pull-right"><strong></strong></span></td>

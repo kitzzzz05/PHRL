@@ -37,7 +37,7 @@
 	mysqli_query($conn,"update product set product_name='$name',product_price='$sellprice', supplierid='$supplier', categoryid='$category', price='$prodprice', photo='$location', product_qty='$qty' where productid='$id'");
 	
 	if($qty!=$prow['product_qty']){
-		mysqli_query($conn,"insert into inventory (userid,action,productid,quantity,inventory_date) values ('".$_SESSION['id']."','Update Quantity', '$id', '$qty', NOW())");
+		mysqli_query($conn,"insert into inventory (userid,user,action,productid,quantity,inventory_date) values ('".$_SESSION['id']."','".$_SESSION['fullname']."','Update Quantity', '$id', '$qty', NOW())");
 	}
 	?>
 		<script>

@@ -60,7 +60,11 @@
 						<div class="form-group input-group">
                             <span style="width:120px;" class="input-group-addon">Contact Info:</span>
                             <input type="text" style="width:400px;" class="form-control" name="contact">
-                        </div> 						
+                        </div> 	
+                        <div class="form-group input-group">
+                            <span style="width:120px;" class="input-group-addon">Contact Person:</span>
+                            <input type="text" style="width:400px;" class="form-control" name="person">
+                        </div>					
 						</div>
 				</div>
 				</div>

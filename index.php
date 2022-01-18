@@ -164,6 +164,10 @@ if (isset($_GET['code'])) {
                     <!-- Float links to the right. Hide them on small screens -->
                     <div class="w3-left w3-hide-small">
                     </div>
+                    <ul class="nav navbar-nav navbar-right navBar">
+                        <li class="nav-item"> <a href="#product" class="w3-bar-item w3-button">Product</a></li>
+                     
+                    </ul>
                     <ul class="nav navbar-nav navbar-left navBar">
                         <li class="nav-item"> <a href="#product" class="w3-bar-item w3-button">Product</a></li>
                         <li class="nav-item"> <a href="#services" class="w3-bar-item w3-button">Services</a></li>

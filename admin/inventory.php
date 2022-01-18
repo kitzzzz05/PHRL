@@ -23,6 +23,7 @@
 						<th class="hidden"></th>
                         <th>Date</th>
 						<th>User</th>
+						<th>Name</th>
                         <th>Action</th>
 						<th>Product Name</th>
 						<th>Quantity</th>
@@ -42,10 +43,15 @@
 								$urow=mysqli_fetch_array($u);
 								if($urow['access']==1){
 									echo "Admin";
+								}else if($urow['access']==2){
+									echo "Cashier";
+								}else{
+									echo "Clerk";
 								}
 								
 							?>
 							</td>
+							<td align="right"><center><?php echo $iqrow['user']; ?></center></td>
 							<td align="right"><center><?php echo $iqrow['action']; ?></center></td>
 							<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
 							<td align="right"><center><?php echo $iqrow['quantity']; ?></center></td>

@@ -34,6 +34,7 @@
 				$_SESSION['id']=$row['userid'];
 				$_SESSION['acces']=$row['access'];
 				$_SESSION['username']=$row['username'];
+				$_SESSION['fullname']=$row['fullname'];
 				?>
 				<script>
 					window.alert('Login Success, Welcome!');

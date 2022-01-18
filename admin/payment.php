@@ -26,8 +26,8 @@ while ($row = mysqli_fetch_array($query)) {
     mysqli_query($conn, "DELETE from dummy_cart WHERE id = '$id'");
 
     //insert to logs
-    mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date) 
-         values ('" . $_SESSION['id'] . "','Purchase POS', '$prodId', '$quantity', NOW())");
+    mysqli_query($conn, "INSERT into inventory (userid,user,action,productid,quantity,inventory_date) 
+         values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Purchase POS', '$prodId', '$quantity', NOW())");
 
     
         }

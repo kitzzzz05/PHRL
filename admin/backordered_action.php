@@ -23,8 +23,8 @@ if ($count < $purchaseQuantity) {
 
 	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$count where productid='$prodId'");
 
-	mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-	values ('" . $_SESSION['id'] . "','Back Order Added', '$prodId', '$count', NOW())");
+	mysqli_query($conn, "INSERT into inventory (userid, user,action,productid,quantity,inventory_date)  
+	values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Back Order Added', '$prodId', '$count', NOW())");
 
 } else {
 
@@ -34,8 +34,8 @@ if ($count < $purchaseQuantity) {
 
 	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$purchaseQuantity where productid='$prodId'");
 
-	mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-	values ('" . $_SESSION['id'] . "','Back Order Added', '$prodId', '$count', NOW())");
+	mysqli_query($conn, "INSERT into inventory (userid,user,action,productid,quantity,inventory_date)  
+	values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Back Order Added', '$prodId', '$count', NOW())");
 }
 
 ?>

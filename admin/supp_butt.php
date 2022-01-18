@@ -56,6 +56,11 @@
                             <span class="input-group-addon" style="width:120px;">Contact Info:</span>
                             <input type="text" style="width:400px;" value="<?php echo $b['contact'] ?>" class="form-control" name="contact">
                         </div>
+                        <div style="height:10px;"></div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon" style="width:120px;">Contact Person:</span>
+                            <input type="text" style="width:400px;" value="<?php echo $b['person'] ?>" class="form-control" name="person">
+                        </div>
 				</div>
 				</div>
                 <div class="modal-footer">

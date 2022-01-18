@@ -25,15 +25,15 @@ if ($count < $purchaseQuantity) {
 	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$count,product_price = '$price' 
 	where productid='$prodId'");
 
-	mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-	values ('" . $_SESSION['id'] . "','Received Order  Added', '$prodId', '$count', NOW())");
+	mysqli_query($conn, "INSERT into inventory (userid,user,action,productid,quantity,inventory_date)  
+	values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Received Order  Added', '$prodId', '$count', NOW())");
 } else {
 	mysqli_query($conn, "UPDATE purchase_final set status = 1 WHERE id='$id' ");
 	mysqli_query($conn, "UPDATE product set product_qty= product_qty+$purchaseQuantity,product_price = '$price' 
 	 where productid='$prodId'");
 
-	mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-	values ('" . $_SESSION['id'] . "','Received Order  Added', '$prodId', '$count', NOW())");
+	mysqli_query($conn, "INSERT into inventory (userid,user,raction,productid,quantity,inventory_date)  
+	values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Received Order  Added', '$prodId', '$count', NOW())");
 }
 
 ?>

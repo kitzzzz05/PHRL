@@ -9,8 +9,9 @@ $to = $_POST['to'];
 $query=mysqli_query($conn,"select * from user where userid='".$_SESSION['id']."'");
 $row=mysqli_fetch_array($query);
 
+date_default_timezone_set('Asia/Manila');
 $date = date("Y-m-d H:i");
-$datenow = date_format(new DateTime($date), "F d, Y");
+$datenow = date_format(new DateTime($date), "F d, Y H:i");
 ?>
 
 
@@ -31,10 +32,11 @@ $datenow = date_format(new DateTime($date), "F d, Y");
 						<tr>
 							<td width="65%">
 								Employee Name : <?php echo $row['fullname']; ?><br />
-								Inventory Date : From: <?php echo $from ?> - To: <?php echo $to ?><br />
+								Inventory Date :<?php echo $from ?> - <?php echo $to ?><br />
 							</td>
 							<td width="35%">
-								Employee Role: <?php echo $row['username']; ?><br />
+								Date:  <?php echo $datenow; ?><br />
+								Employee Role: <?php echo $_SESSION['username']."- ".$_SESSION['fullname']; ?><br />
 							</td>
 						</tr>
 					</table>
@@ -45,11 +47,11 @@ $datenow = date_format(new DateTime($date), "F d, Y");
                             <th align="center">Customer</th>
 							<th align="center">Product Name</th>
 							<th align="center">Sales Type</th>
-							<th align="center">Status</th>
 							<th align="center">Total Purchase</th>
 							<tbody>
 
                             <?php
+							$total=0;
 								$iq = mysqli_query($conn, "SELECT * FROM sales  WHERE DATE(sales_date) BETWEEN '$from' AND '$to' ORDER by sales_date asc");
                                 while ($sqrow = mysqli_fetch_array($iq)) {
 

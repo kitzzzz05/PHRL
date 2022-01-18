@@ -19,8 +19,8 @@ while ($row = mysqli_fetch_array($query)) {
     //DELETE FROM DUMMY CART
     mysqli_query($conn, "DELETE from purchase WHERE purcase_id = '$id'");
 
-    mysqli_query($conn, "INSERT into inventory (userid,action,productid,quantity,inventory_date)  
-         values ('" . $_SESSION['id'] . "','Buy Stock', '$prodId', '$quant', NOW())");
+    mysqli_query($conn, "INSERT into inventory (userid,user,action,productid,quantity,inventory_date)  
+         values ('" . $_SESSION['id'] . "','".$_SESSION['fullname']."','Buy Stock', '$prodId', '$quant', NOW())");
 }
 header('location:purchase_order.php');
 ?>

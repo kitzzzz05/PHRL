@@ -4,9 +4,11 @@
 	$name=$_POST['name'];
 	$address=$_POST['address'];
 	$contact=$_POST['contact'];
+	$person=$_POST['person'];
+
 
 	
-	mysqli_query($conn,"insert into supplier (company_name, company_address, contact) values ( '$name', '$address', '$contact')");
+	mysqli_query($conn,"insert into supplier (company_name, company_address, contact,person) values ( '$name', '$address', '$contact','$person')");
 	
 	?>
 		<script>
