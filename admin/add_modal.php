@@ -181,7 +181,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form role="form" method="POST" action="" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="register.php" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <div style="height:15px;"></div>
                             <div class="form-group input-group">
