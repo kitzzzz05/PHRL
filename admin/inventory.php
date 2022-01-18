@@ -11,9 +11,13 @@
             <h1 class="page-header">Inventory Logs Report</h1>
         </div>
     </div>
-	<button class="btn btn-default" id ="print" onclick="printPage()">
-		<i class="fa fa-print"></i> Print
-	</button></a>
+	<form method="post" action="inventory_logs_report.php" target="_new" class="form-inline">
+		<div class="form-group">
+			<button class="submit" id="print" >
+				<i class="fa fa-print"></i> Print
+			</button></a>
+		</div>
+	</form>
 	<br></br>
     <div class="row">
         <div class="col-lg-12">
