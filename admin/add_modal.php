@@ -141,7 +141,9 @@
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Password:</span>
-                                <input type="password" style="width:400px;" class="form-control" name="password" required>
+                                <input type="password" style="width:400px;" class="form-control" name="password" id ="pswd" 
+                                oninput="verifyPassword()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <span id = "message" style="color:red"> </span><br>
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Position:</span>
@@ -179,7 +181,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form role="form" method="POST" action="register.php" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="" enctype="multipart/form-data">
                         <div class="container-fluid">
                             <div style="height:15px;"></div>
                             <div class="form-group input-group">
@@ -200,7 +202,9 @@
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Password:</span>
-                                <input type="password" style="width:400px;" class="form-control" name="password" required>
+                                <input type="password" style="width:400px;" class="form-control" name="password" id ="pswd" 
+                                oninput="verifyPassword()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                <span id = "message" style="color:red"> </span><br>
                             </div>
                             <div class="form-group input-group">
                                 <span style="width:120px;" class="input-group-addon">Position:</span>
@@ -224,3 +228,46 @@
         </div>
     </div>
 </div>
+
+
+
+<script type="text/javascript">
+     function verifyPassword() { 
+
+  var pw = document.getElementById("pswd").value;  
+ 
+
+  
+  if(pw.search(/[0-9]/) < 0 && pw.length >=6){
+    document.getElementById("message").innerHTML = "**Your password must contain at least one digit";  
+     return false;  
+}
+ //minimum password length validation  
+  if(pw.length < 6) {  
+     document.getElementById("message").innerHTML = "**Password length must be atleast 6 characters";  
+     return false;  
+  }
+  
+  if(pw.length >8 && pw.length <15 ) {  
+     document.getElementById("message").innerHTML = "";  
+     
+  }
+
+
+//maximum length of password validation  
+  if(pw.length > 15) {  
+     document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  }
+} 
+</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
