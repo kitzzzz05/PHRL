@@ -41,7 +41,7 @@ if (isset($_GET['addpurchase'])) {
 
                                         <input type="hidden" name="prodid" id="prodid" value="<?= $pid ?>">
                                         <center>
-                                            <button type="submit" class="btn btn-success btn-sm" name="add"><i class="fa fa-add"></i>add</button>
+                                        <a href='processadd.php?id=<?= $pid ?>' class='btn btn-xs btn-primary'>Add</a>
 
                                         </center>
                                     </td>
@@ -57,17 +57,5 @@ if (isset($_GET['addpurchase'])) {
         <?php include('../script.php'); ?>
         <script src="../custom.js"></script>
     <?php }
-
-// insert new products 
-if (isset($_GET["submitpurchase"])) {
-    $prodid = $_POST['prodid'];
-
-    mysqli_query($conn, "INSERT into purchase (product_id, date,purchase_quantity)
-		VALUES ('$prodid',now(),1)");
-
-    header("location: ../purchase_order.php");
-}
-
-
 
     ?>

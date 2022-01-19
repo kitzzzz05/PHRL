@@ -54,18 +54,24 @@ $datenow = date_format(new DateTime($date), "F d, Y H:i");
 
 								<?php
 								$total= 0;
-								$iq = mysqli_query($conn, "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to' ORDER by product_qty asc");
-								while ($iqrow = mysqli_fetch_array($iq)) {
+								$iq =  "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to'";
+									if(isset($_GET['status'])){
+										$status = $_GET['status'];
+										if($status=='negative'){
+											$iq  = $iq . " AND product_qty = 0";
+										}
+										if($status =='critical'){
+											$iq  = $iq. " AND product_qty between 3 and 9";
+										}
+										if($status 	=='good'){
+											$iq  = $iq . " AND product_qty >=10 ";
+										}
+									}
+									$iq2  = mysqli_query($conn, $iq);
+									while ($iqrow = mysqli_fetch_array($iq2)) {
 
 								?>
-									<tr <?php if ($iqrow['product_qty'] >= 10 && $iqrow['product_qty'] <= 15) {
-											echo 'style="background-color : lightgreen"; ';
-										} else if ($iqrow['product_qty'] <= 9 && $iqrow['product_qty'] >= 3) {
-											echo 'style="background-color : #ff4d4d"; ';
-										} else if ($iqrow['product_qty'] == 0) {
-											echo 'style="background-color : gray"; ';
-										}
-										?>>
+									<tr>
 										<td>
 											<center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center>
 										</td>

@@ -139,7 +139,7 @@
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
-                            <form action="extras/ajaxcall.php?submitpurchase" method="POST">
+                            <form action="#" method="POST">
                                 <div class="modal-body" id="addpurchase">
                                 </div>
                             </form>

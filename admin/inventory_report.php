@@ -16,7 +16,7 @@
 						<span> Legend of Quantity: </span>
 						<span style="color:gray">&nbsp;&nbsp;&nbsp;&nbsp;&#9724; 0 piece </span>
 						<span style="color:#ff4d4d">&nbsp;&nbsp;&nbsp;&nbsp;&#9724; 3-9 pieces </span>
-						<span style="color:lightgreen">&nbsp;&nbsp;&nbsp;&nbsp;&#9724; 10-15 pieces </span>
+						<span style="color:lightgreen">&nbsp;&nbsp;&nbsp;&nbsp;&#9724; 10-above </span>
 
 						<div align="right">
 							<form method="POST">
@@ -31,21 +31,44 @@
 					</div>
 
 				</div>
-				<form method="post" action="print_inventory.php" target="_new" class="form-inline">
-					<div class="form-group">
+				<div class="form-group">
 					<?php
+					$status= 'all';
+					if(isset($_GET['status'])){
+						$status = $_GET['status'];	
+					} 
+					
+					?>	
+				<form method="post" action="print_inventory.php?status=<?=$status?>" target="_new" class="form-inline">
+				
+						<?php
 						if (isset($_POST["Submit1"])) {
 							$from = $_POST['from'];
 							$to = $_POST['to'];
 						}
-					?>
+						?>
 						<input type="hidden" name="from" value="<?php echo $from; ?>">
 						<input type="hidden" name="to" value="<?php echo $to; ?>">
-						<button class="submit" id="print" >
+						<button class="submit" id="print">
 							<i class="fa fa-print"></i> Print
 						</button></a>
+						</form>
+						<br>
+						
+						<a href="inventory_report.php?status=negative" class='btn btn-default'>
+							<i class="fa fa-battery-empty" style="color:gray"></i> Negative
+						</button></a>
+						<a href="inventory_report.php?status=critical" class='btn btn-default'>
+							<i class="fa fa-battery-half" style="color:red"></i> Critical
+						</button></a>
+
+						<a href="inventory_report.php?status=good" class='btn btn-default'>
+							<i class="fa fa-battery-full" style="color:lightgreen	"></i> Good
+						</button></a>
+						
 					</div>
-				</form>
+				
+			
 				<br>
 
 				</br>
@@ -69,46 +92,80 @@
 								if (isset($_POST["Submit1"])) {
 									$from = $_POST['from'];
 									$to = $_POST['to'];
-									$iq = mysqli_query($conn, "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to' ORDER by product_qty asc");
+									$iq = mysqli_query($conn, "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to'");
 									while ($iqrow = mysqli_fetch_array($iq)) {
 
 								?>
-										<tr <?php if ($iqrow['product_qty'] >= 10 && $iqrow['product_qty'] <= 15) {
-												echo 'style="background-color : lightgreen"; ';
-											} else if ($iqrow['product_qty'] <= 9 && $iqrow['product_qty'] >= 3) {
-												echo 'style="background-color : #ff4d4d"; ';
-											} else if ($iqrow['product_qty'] == 0) {
-												echo 'style="background-color : gray"; ';
-											}
-											?>>
+										<tr>
 											<td class="hidden"></td>
-											<td><center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center></td>
-											<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
-											<td align="right"><center><?php echo number_format( $iqrow['price'], 2); ?></center></td>
-											<td align="right"><center><?php echo number_format( $iqrow['product_price'], 2); ?></center></td>
-											<td align="right"><center><?php echo $iqrow['product_qty']; ?></center></td>
+											<td>
+												<center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo $iqrow['product_name']; ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo number_format($iqrow['price'], 2); ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo number_format($iqrow['product_price'], 2); ?></center>
+											</td>
+											<td align="right">
+												<center><?php if ($iqrow['product_qty'] >=10) {
+															echo '<span class="badge badge-pill" style="background:lightgreen">' . $iqrow['product_qty'] . '</span> ';
+														} else if ($iqrow['product_qty'] <= 9 && $iqrow['product_qty'] >= 3) {
+																echo '<span class="badge badge-pill" style="background:red">' . $iqrow['product_qty'] . '</span> ';
+														} else if ($iqrow['product_qty'] == 0) {
+															echo '<span class="badge badge-pill" style="background:gray">' . $iqrow['product_qty'] . '</span> ';
+														}
+														?></center>
+											</td>
 										</tr>
 									<?php
 									}
 								} else {
-									$iq = mysqli_query($conn, "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to' ORDER by product_qty asc");
-									while ($iqrow = mysqli_fetch_array($iq)) {
+									$iq =  "SELECT * FROM product  WHERE date BETWEEN '$from' AND '$to'";
+									if(isset($_GET['status'])){
+										$status = $_GET['status'];
+										if($status=='negative'){
+											$iq  = $iq . " AND product_qty = 0";
+										}
+										if($status =='critical'){
+											$iq  = $iq. " AND product_qty between 3 and 9";
+										}
+										if($status 	=='good'){
+											$iq  = $iq . " AND product_qty >=10 ";
+										}
+									}
+									$iq2  = mysqli_query($conn, $iq);
+									while ($iqrow = mysqli_fetch_array($iq2)) {
 
 									?>
-										<tr <?php if ($iqrow['product_qty'] >= 10 && $iqrow['product_qty'] <= 15) {
-												echo 'style="background-color : lightgreen"; ';
-											} else if ($iqrow['product_qty'] <= 9 && $iqrow['product_qty'] >= 3) {
-												echo 'style="background-color : #ff4d4d"; ';
-											} else if ($iqrow['product_qty'] == 0) {
-												echo 'style="background-color : gray"; ';
-											}
-											?>>
+										<tr>
 											<td class="hidden"></td>
-											<td><center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center></td>
-											<td align="right"><center><?php echo $iqrow['product_name']; ?></center></td>
-											<td align="right"><center><?php echo number_format( $iqrow['price'], 2);?></center></td>
-											<td align="right"><center><?php echo number_format( $iqrow['product_price'], 2);?></center></td>
-											<td align="right"><center><?php echo $iqrow['product_qty']; ?></center></td>
+											<td>
+												<center><?php echo date('M d, Y h:i A', strtotime($iqrow['date'])); ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo $iqrow['product_name']; ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo number_format($iqrow['price'], 2); ?></center>
+											</td>
+											<td align="right">
+												<center><?php echo number_format($iqrow['product_price'], 2); ?></center>
+											</td>
+											<td align="right">
+												<center><?php if ($iqrow['product_qty'] >= 10) {
+															echo '<span class="badge badge-pill" style="background:lightgreen">' . $iqrow['product_qty'] . '</span> ';
+														} else if ($iqrow['product_qty'] <= 9 && $iqrow['product_qty'] >= 3) {
+																echo '<span class="badge badge-pill" style="background:red">' . $iqrow['product_qty'] . '</span> ';
+														} else if ($iqrow['product_qty'] == 0) {
+															echo '<span class="badge badge-pill" style="background:gray">' . $iqrow['product_qty'] . '</span> ';
+														}
+														
+														?></center>
+											</td>
 
 										</tr>
 								<?php

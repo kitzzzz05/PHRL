@@ -142,6 +142,12 @@ $access = $srow['access'];
                             <li>
                                 <a href="inventory.php"> Audit Trails </a>
                             </li>
+                            <li>
+                                <a href="slowmoving.php"> Slow Moving </a>
+                            </li>
+                            <li>
+                                <a href="fastmoving.php"> Fast Moving </a>
+                            </li>
                         </ul>
                     </li>
                     
