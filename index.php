@@ -196,11 +196,6 @@ if (isset($_GET['code'])) {
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" name="login" id="login" class="btn btn-primary btn-block">Sign in</button>
-
-                                                <?php echo $facebook_login_url ?>
-                                                <a href="#" class="google btn">
-                                                    Login with <i class="fa fa-google fa-fw"></i> </a>
-
                                             </div>
                                         </form>
                                     </div>
