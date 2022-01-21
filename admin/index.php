@@ -42,6 +42,14 @@
 		</div>
 	</div>
 </div>
+<style>
+body {
+  background-image: url('../background.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
 <?php include('script2.php'); ?>
 <?php include('add_modal.php'); ?>
 </body>
