@@ -122,21 +122,21 @@ header( 'Location: profile.php' ) ;
 										<table class="table table-user-information" align="center">
 											<tbody>
 												<tr>
-													<td>userDOB</td>
+													<td>Birthday</td>
 													<td><?php echo $userRow['dob']; ?></td>
 												</tr>
 												<tr>
-													<td>userAddress</td>
+													<td>Address</td>
 													<td><?php echo $userRow['address']; ?>
 													</td>
 												</tr>
 												<tr>
-													<td>userPhone</td>
+													<td>Phone</td>
 													<td><?php echo $userRow['contact']; ?>
 													</td>
 												</tr>
 												<tr>
-													<td>userEmail</td>
+													<td>Email</td>
 													<td><?php echo $userRow['email']; ?>
 													</td>
 												</tr>

@@ -29,7 +29,7 @@ $datenow = date_format(new DateTime($date), "F d, Y H:i");
 						<tr>
 							<td width="65%">
 								Name : POS Purchase<br />
-								Billing Address : None<br />
+								Address : None<br />
 							</td>
 							<td width="35%">
 								Invoice Number: <?php echo "0000".$row2['id'] ?><br />

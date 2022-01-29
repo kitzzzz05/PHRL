@@ -46,7 +46,7 @@ $datenow = date_format(new DateTime($date), "F d, Y H:i");
 						<tr>
 							<th align="center">Date</th>
 							<th align="center">Product Name</th>
-							<th align="center">Original Price</th>
+							<th align="center">Supplier Price</th>
 							<th align="center">Selling Price</th>
 							<th align="center">Quantity</th>
 							<th align="center">Total Purchase</th>

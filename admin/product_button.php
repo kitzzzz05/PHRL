@@ -4,7 +4,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <center><h4 class="modal-title" id="myModalLabel">Delete Product</h4></center>
+                    <center><h4 class="modal-title" id="myModalLabel">Are you sure you want to delete this  product?</h4><br><p>This product will no longer be in the Inventory&#33;</br><p></center>
                 </div>
                 <div class="modal-body">
 				<div class="container-fluid">
@@ -12,8 +12,8 @@
 						$a=mysqli_query($conn,"select * from product where productid='$pid'");
 						$b=mysqli_fetch_array($a);
 					?>
-                    <h5><center>Product Name: <strong><?php echo $b['product_name']; ?></strong></center></h5>
-					<form role="form" method="POST" action="deleteproduct.php<?php echo '?id='.$pid; ?>">
+                    <h5><center>Product Name: <strong><?php echo $b['product_name']; ?>&#10071; &#65039;</strong></center></h5>
+					<form role="form" method="POST" action="deleteproduct.php<?php echo '?id='.$pid;  ?>">
                 </div>                 
 				</div>
                 <div class="modal-footer">

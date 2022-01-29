@@ -27,7 +27,7 @@
                                     <th>Product Name</th>
                                     <th>Supplier</th>
                                     <th>Quantity</th>
-                                    <th>Prod Price</th>
+                                    <th>Selling Price</th>
                                     <th>Date</th>
                                     <th>Status</th>
                                     <th>Action</th>

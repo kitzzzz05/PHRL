@@ -190,10 +190,9 @@ if (isset($_GET['code'])) {
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only" for="password">Password</label>
-                                                <input type="password" value = " "class="form-control" name="password" placeholder="Password" required value = "" id ="myInput">
+                                                <input type="password" value =""class="form-control" name="password" placeholder="Password" required value =""id ="myInput">
                                                 <input type="checkbox" onclick="myFunction()"> Show Password
-                                                <a href="forgot.php" class="forgot" style="text-align: center;"><center>Forgot Password?</center></a>
-                                            </div>
+                                                                                              <!--   <a href="forgot.php" class="forgot" style="text-align: center;"><center>Forgot Password?</center></a> This is a comment -->
                                             <div class="form-group">
                                                 <button type="submit" name="login" id="login" class="btn btn-primary btn-block">Sign in</button>
                                             </div>
@@ -401,8 +400,8 @@ if (isset($_GET['code'])) {
             <div class="row">
                 <div class="col-md-5">
                     <h2 style="color:white;">Make appointment today!</h2>
-                    <p style="color:white;">This is Mechanic's Schedule. Please <span class="label label-danger">login</span> to make an appointment. </p>
-
+                    <p style="color:white;"> This is Mechanic's Schedule. Please <span class="label label-danger">login</span> to make an appointment.</p>
+                        <center>  <p  style="color:white;"> <B>CLICK HERE</B> <span font-size:100px;>&#8681;</span> </p> </center>
                     <!-- date textbox -->
 
                     <div class="input-group" style="margin-bottom:10px;">
@@ -473,25 +472,25 @@ if (isset($_GET['code'])) {
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Pilo D716</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Pilo D716 </div>
                     <img src="design/1.jpg" alt="House" style="width:100%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Water Proof Mount</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Water Proof Mount </div>
                     <img src="design/2.jpg" alt="House" style="width:100%; height :250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Sealed MTB Road</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Sealed MTB Road </div>
                     <img src="design/3.jpg" alt="House" style="width:100%; height :250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Bike Lubricating Oil</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Bike Lubricating Oil </div>
                     <img src="design/4.jpg" alt="House" style="width:100%; height :250px">
                 </div>
             </div>
@@ -500,58 +499,58 @@ if (isset($_GET['code'])) {
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Black Cat Inner Tube</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Black Cat Inner Tube </div>
                     <img src="design/5.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Bike Seat</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Bike Seat </div>
                     <img src="design/6.jpg" alt="House" style="width:100%; height :250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Bike Chain</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Bike Chain </div>
                     <img src="design/7.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <div class="w3-display-container">
-                    <div class="w3-display-topleft w3-black w3-padding">Bike Chain Silver</div>
+                    <div class="w3-display-topleft w3-black w3-padding">Bike Chain Silver </div>
                     <img src="design/8.jpg" alt="House" style="width:99%;height:250px">
                 </div>
             </div>
 
         <div class="w3-container w3-padding-32" id="services">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Services</h3>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Services </h3>
         </div>
         <div class="w3-row-padding">
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="design/forkinstallation.png" style="width:100%; height :250px">
                 <h3>FORK INSTALLATION</h3>
-                <p class="w3-opacity">Bike Parts</p>
+                <p class="w3-opacity">₱150.00</p>
                 <p>Each fork must be cut specifically according to the frame size (headset height) and the handling preferences (number of spacers to install below the stem). Especially when dealing with a new bike, it’s suggested to cut the tube leaving a slight margin, and place some extra spacers above and below the stem. This way you can test different handling characteristics by adjusting the handlebar position according to your preferences. Once you’ve found the ideal configuration, you can proceed with the final cut of the steerer tube.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="design/headsetclearing.jpg" style="width:100%; height :250px">
                 <h3>HEADSET CLEARING</h3>
-                <p class="w3-opacity">HEAD</p>
+                <p class="w3-opacity">₱100.00</p>
                 <p>Bounce the front wheel off the ground a few times: a rattling sound indicates the headset is loose. If the bars lock in the middle and point straight then it’s either too tight or the bearings are heavily worn. Holding the front wheel or frame between your legs, with the bars as leverage, carefully place a 32mm headset wrench over the locknut and turn anticlockwise</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="design/grpset.jpg" alt="Mike" style="width:100%; height :250px">
                 <h3>CHANGE GROUP</h3>
-                <p class="w3-opacity">Bike Set</p>
+                <p class="w3-opacity">₱300.00</p>
                 <p>These are probably the first thing you would look to upgrade. So for instance is you are running a 105 Groupset you can always upgrade to a Ultegra crankset. They are much lighter, so can save quite a bit of weight. You can keep your existing 105 levers and even chain and cassette if you like. But just remember that if your chain and cassette are very old and are wearing out, by putting a new chainsets on it may not run 100% right. This is simply because mixing old with new tends to cause chain suck or slipping.</p>
 
             </div>
             <div class="w3-col l3 m6 w3-margin-bottom">
                 <img src="design/chghub.jpg" alt="Dan" style="width:100%; height :250px">
                 <h3>CHANGE HUB</h3>
-                <p class="w3-opacity">Bike Hub</p>
+                <p class="w3-opacity">₱400.00</p>
                 <p>The hub is the metal tube going through the middle of the wheel that houses the moving parts. Installing a completely new hub
                     requires rebuilding the wheel from scratch, which is usually more expensive than
                     buying a new wheel. However, you can remove and service or replace the internal
@@ -592,7 +591,7 @@ if (isset($_GET['code'])) {
             <ul class="footer-links">
               <li><a href="http://localhost:8080/phrl/">About Us</a></li>
               <li><a href="https://www.facebook.com/PhrlBicyclePartsStore">Contact Us</a></li>
-              <li><a href="file:///C:/Users/BLANK/Desktop/Privacy.html">Privacy Policy</a></li>
+              <li><a href="file:///C:/xampp/htdocs/PHRL/Privacy.html">Privacy Policy</a></li>
               <li><a href="https://www.google.com/maps/place/Sta+monica+st/@14.3722757,120.9770042,17z/data=!3m1!4b1!4m5!3m4!1s0x3397d3fb332b69c7:0xfc3b5dfd7d2dc504!8m2!3d14.3722306!4d120.9792417/">Location</a></li>
             </ul>
           </div>

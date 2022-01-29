@@ -24,7 +24,7 @@
 									<th>Product Id </th>
 									<th>Product Name</th>
 									<th>Supplier</th>
-									<th>Prod Price</th>
+									<th>Suplier Price</th>
 									<th>Selling Price</th>
 									<th>Quantity</th>
 									<th>Description</th>

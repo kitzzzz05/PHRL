@@ -18,7 +18,24 @@ die("Error running $sql: " . mysqli_error());
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">;
+        <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  
+  text-align: left;
+  padding: 8px;
+}
+
+tr {
+  background-color: #FDFEFE;
+}
+</style>
     </head>
     <body>
         <?php

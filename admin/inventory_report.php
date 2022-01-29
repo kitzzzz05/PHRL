@@ -82,7 +82,7 @@
 								<tr>
 									<th>Date</th>
 									<th>Product Name</th>
-									<th>Orinal Price</th>
+									<th>Supplier Price</th>
 									<th>Selling Price</th>
 									<th>Quantity</th>
 								</tr>

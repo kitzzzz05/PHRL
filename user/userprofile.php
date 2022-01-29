@@ -248,25 +248,25 @@ $userRow=mysqli_fetch_array($res,MYSQLI_ASSOC);
                                                                 <td><?php echo $userRow['userMaritialStatus']; ?></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userDOB</td>
+                                                                <td>Birthday</td>
                                                                 <td><?php echo $userRow['userDOB']; ?></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userGender</td>
+                                                                <td>Gender</td>
                                                                 <td><?php echo $userRow['userGender']; ?></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userAddress</td>
+                                                                <td>Address</td>
                                                                 <td><?php echo $userRow['userAddress']; ?>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userPhone</td>
+                                                                <td>Phone</td>
                                                                 <td><?php echo $userRow['userPhone']; ?>
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userEmail</td>
+                                                                <td>Email</td>
                                                                 <td><?php echo $userRow['userEmail']; ?>
                                                                 </td>
                                                             </tr>

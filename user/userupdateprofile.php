@@ -299,7 +299,7 @@ $widowed = "checked";
                                                             </tr>
                                                             <!-- radio button end -->
                                                             <tr>
-                                                                <td>userDOB</td>
+                                                                <td>Birthday</td>
                                                                 <!-- <td><input type="text" class="form-control" name="userDOB" value="<?php echo $userRow['userDOB']; ?>"  /></td> -->
                                                                 <td>
                                                                     <div class="form-group ">
@@ -333,15 +333,15 @@ $widowed = "checked";
                                                             </tr>
                                                             <!-- radio button end -->
                                                             <tr>
-                                                                <td>userAddress</td>
+                                                                <td>Address</td>
                                                                 <td><input type="text" class="form-control" name="userAddress" value="<?php echo $userRow['userAddress']; ?>"  /></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userPhone</td>
+                                                                <td>Phone</td>
                                                                 <td><input type="text" class="form-control" name="userPhone" value="<?php echo $userRow['userPhone']; ?>"  /></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>userEmail</td>
+                                                                <td>Email</td>
                                                                 <td><input type="text" class="form-control" name="userEmail" value="<?php echo $userRow['userEmail']; ?>"  /></td>
                                                             </tr>
                                                             <tr>

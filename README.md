@@ -5,5 +5,5 @@ Simple POS and Inventory System features a Simple Point of Sales (POS) front-end
 
 # Admin:
 Username: admin
-Password: admin
+Password: admin123
 
