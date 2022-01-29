@@ -28,9 +28,12 @@ $access = $srow['access'];
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
+            <?php if ($access == 1) {  ?>
                 <li>
                     <a href="title.php"><i class="fa fa-home fa-fw"></i> Home</a>
                 </li>
+           <?php } ?>
+            
                 <?php if ($access == 1) {  ?>
                     <li>
                         <a href="#"><i class="fa fa-copy fa-fw"></i> Appointment<span class="fa arrow"></span></a>
@@ -47,7 +50,7 @@ $access = $srow['access'];
                         </ul>
                     </li>
                 <?php } ?>
-                <?php if ($access == 1 || $access == 2) {  ?>
+                <?php if ($access == 2) {  ?>
                     <li>
                         <a href="#"><i class="fa fa-copy fa-fw"></i> Point of Sale<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

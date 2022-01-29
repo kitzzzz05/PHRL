@@ -26,8 +26,16 @@
                             <center>Quantity : <input type="number" style="width:50px;" class="no-outline" name="quantity" min="1" max="<?= $b['quantity_purchase'] ?>" required><strong><?php echo '/ ' . $b['quantity_purchase']; ?></strong></center>
                         </h5>
                         <h5>
-                            <center>Mark Up : <input type="text" style="width:70px;" class="no-outline" name="price" value="<?php echo number_format($b['product_price'], 2);?>" required></center>
+                            <center>Mark Up : <input type="text" style="width:70px;" class="no-outline" oninput="getMarkUp(<?php echo $b['product_price']?>)" id = "price" name="price" value="<?php echo number_format($b['product_price'], 2);?>" required></center>
+                          
                         </h5>
+                        <h5>
+                         <span id = "message" style="color:red"><?php
+                         
+                         $markUpVal = ($b['product_price']-$b['price'])/$b['price'] * 100;
+                         echo "Mark up %: ".$markUpVal;  ?> </span><br> 
+                        </h5>
+                        
                        
                 </div>
             </div>
@@ -91,4 +99,16 @@
         outline: none;
     }
 </style>
+
+<script type="text/javascript">
+     function getMarkUp(prodprice) { 
+
+  var price = document.getElementById("price").value;  
+ 
+  
+  markUpVal = (price-prodprice)/prodprice * 100
+    document.getElementById("message").innerHTML = "Mark up %: "+Math.round(markUpVal);  
+    
+     }
+</script>
 <!-- /.modal -->

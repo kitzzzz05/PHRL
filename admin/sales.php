@@ -70,8 +70,15 @@
 										<tr>
 											<td class="hidden"></td>
 											<td>
+												<center><?php echo $sqrow['salesid']; ?></center>
+											</td>
+											<td>
+												<center><?php echo $sqrow['cartid']; ?></center>
+											</td>
+											<td>
 												<center><?php echo date('M d, Y h:i A', strtotime($sqrow['sales_date'])); ?></center>
 											</td>
+											
 											<td>
 												<center><?php echo $sqrow['customer_name']; ?></center>
 											</td>
@@ -84,12 +91,24 @@
 												<center>
 													<?php echo $sqrow['sales_type']; ?></center>
 											</td>
-											<td align="right"><?php echo number_format($sqrow['sales_total'], 2);
-																$total += $sqrow['sales_total']; ?></td>
+
+											<td>
+												<center> <?php if ($sqrow['status'] == 'Voided') { ?>
+														<span class='badge badge-pill' style='background:red'><?php echo $sqrow['status']; ?></span>
+												</center>
+											</td>
+										<?php   } else { ?>
+											<span class='badge badge-pill' style='background:green'><?php echo 'Sucess' ?></span></center>
+											</td>
+										<?php     } ?>
+										<td align="right"><?php echo number_format($sqrow['sales_total'], 2);
+															$total += $sqrow['sales_total']; ?></td>
+
+										</tr>						$total += $sqrow['sales_total']; ?></td>
 										</tr>
 									<?php	} ?>
 									<tr>
-										<td colspan="4"><strong>Grand Total</strong></span></td>
+										<td colspan="7"><strong>Grand Total</strong></span></td>
 										<td><strong><span class="pull-right"><?php echo number_format($total, 2) ?></span><strong></td>
 									</tr>
 									<?php

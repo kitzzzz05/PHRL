@@ -50,32 +50,33 @@ if (isset($_POST['submit'])) {
 					<div class="col-lg-12">
 						<h1 class="page-header">POS
 							<span class="pull-right">
-								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule"><i class="fa fa-search"></i> Search Item</button>
+						<a href="product.php">	<button class="btn btn-success btn-sm"style="width:120px;height:50px"> View Item</button></a>
+								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule" style="width:120px;height:50px"><i class="fa fa-search"></i> Search Item</button>
 							</span>
 						</h1>
 						</h1>
 						<div class="col-lg-12 main-chart">
 							<br>
 
-							<div class="col-sm-4">
+							<div class="col-sm-4" >
 							</div>
-							<div class="panel panel-primary" style="width:400px;">
+							<div class="panel panel-primary" style="width:500px;height:275px">
 								<div class="panel-heading">
 									<h4><i></i> Item</h4>
-								</div>
+								</div>	
 								<div class="panel-body">
 									<form role="form" method="POST" action="#">
 										<br>
 
 
 										<div class="form-group input-group">
-											<span style="width:120px;" class="input-group-addon">barcode:</span>
-											<input type="text" class="form-control" name="prodid" required>
+											<span style="width:120px;height:50px" class="input-group-addon" >barcode:</span>
+											<input style="width:250px;height:50px" type="text" class="form-control" name="prodid" required>
 
 										</div>
 										<div class="form-group input-group">
-											<span style="width:120px;" class="input-group-addon">quantity:</span>
-											<input class="form-control" type="number" style="width:100px;" value="1" name="quantity" min="0">
+											<span style="width:120px;height:50px" class="input-group-addon">quantity:</span>
+											<input  style="width:120px;height:50px" class="form-control" type="number" style="width:100px;" value="1" name="quantity" min="0">
 										</div>
 										<input type="submit" name="submit" value="Add to Cart" class="btn btn-success" />
 									</form>
@@ -86,7 +87,7 @@ if (isset($_POST['submit'])) {
 
 					</div>
 					<div class="row">
-						<div class="col-lg-12">
+						<div class="col-lg-12" style="font-size:1.25em;">
 							<table style="width:85%" class="table">
 								<thead>
 									<th></th>

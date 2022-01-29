@@ -8,7 +8,7 @@
                     <h4 class="modal-title" id="myModalLabel">Search Item</h4>
                 </center>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-lgg">
               
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
             

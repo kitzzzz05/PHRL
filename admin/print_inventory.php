@@ -28,7 +28,7 @@ $datenow = date_format(new DateTime($date), "F d, Y H:i");
 
 			<tr>
 				<td colspan="2">
-					<center><b>Invetory Report</b></center>
+					<center><b>Invetory Report <?php echo strtoupper("(".$_GET['status'].")")?></b></center>
 					<table width="100%" cellpadding="5">
 						<tr>
 							<td width="65%">
