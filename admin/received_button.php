@@ -15,7 +15,7 @@
                         on a.product_id = b.productid where id='$pid'");
                     $b = mysqli_fetch_array($a);
                     ?>
-                    <form role="form" method="POST" action="receivedaction.php<?php echo '?id=' .$b['id']; ?>" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="receivedaction.php<?php echo '?id=' . $b['id']; ?>" enctype="multipart/form-data">
                         <h5>
                             <center>Purchase ID: <strong><?php echo $b['purchase_id']; ?></strong></center>
                         </h5>
@@ -26,17 +26,18 @@
                             <center>Quantity : <input type="number" style="width:50px;" class="no-outline" name="quantity" min="1" max="<?= $b['quantity_purchase'] ?>" required><strong><?php echo '/ ' . $b['quantity_purchase']; ?></strong></center>
                         </h5>
                         <h5>
-                            <center>Mark Up : <input type="text" style="width:70px;" class="no-outline" oninput="getMarkUp(<?php echo $b['product_price']?>)" id = "price" name="price" value="<?php echo number_format($b['product_price'], 2);?>" required></center>
-                          
+                            <center>Mark Up : <input type="text" style="width:70px;" class="no-outline" oninput="getMarkUp(<?php echo $b['product_price'] ?>, <?php echo  $b['purchase_id'] ?>)" id="price_<?php echo $b['purchase_id']; ?>" name="price" value="<?php echo $b['product_price']; ?>" required></center>
+
                         </h5>
                         <h5>
-                         <span id = "message" style="color:red"><?php
-                         
-                         $markUpVal = ($b['product_price']-$b['price'])/$b['price'] * 100;
-                         echo "Mark up %: ".$markUpVal;  ?> </span><br> 
+                            <span id="message_<?php echo  $b['purchase_id'] ?>" style="color:red"> 
+                        <?php
+                            $markUpVal = round(($b['product_price']-$b['price'])/$b['price'] * 100);
+                         echo "Mark up %: ".$markUpVal;  ?> 
+                        </span><br>
                         </h5>
-                        
-                       
+
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -66,14 +67,14 @@
                         on a.product_id = b.productid where id='$pid'");
                     $b = mysqli_fetch_array($a);
                     ?>
-                    <form role="form" method="POST" action="cancelorder.php<?php echo '?id=' .$b['id']; ?>" enctype="multipart/form-data">
+                    <form role="form" method="POST" action="cancelorder.php<?php echo '?id=' . $b['id']; ?>" enctype="multipart/form-data">
                         <h5>
                             <center>Purchase ID: <strong><?php echo $b['purchase_id']; ?></strong></center>
                         </h5>
                         <h5>
                             <center>Product name: <strong><?php echo $b['product_name']; ?></strong></center>
                         </h5>
-                        
+
                 </div>
             </div>
             <div class="modal-footer">
@@ -101,14 +102,13 @@
 </style>
 
 <script type="text/javascript">
-     function getMarkUp(prodprice) { 
+    function getMarkUp(prodprice,id) {
+        var price = document.getElementById("price_"+id).value;
 
-  var price = document.getElementById("price").value;  
- 
-  
-  markUpVal = (price-prodprice)/prodprice * 100
-    document.getElementById("message").innerHTML = "Mark up %: "+Math.round(markUpVal);  
-    
-     }
+        markUpVal = (price - prodprice) / prodprice * 100;
+        document.getElementById("message_"+id).innerHTML = "Mark up %: " + Math.round(markUpVal);
+        console.log(markUpVal);
+
+    }
 </script>
 <!-- /.modal -->

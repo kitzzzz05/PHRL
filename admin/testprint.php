@@ -33,7 +33,7 @@ $row2 = mysqli_fetch_array($query);
                 Order By : <?php echo $_SESSION['fullname'] ?><br />
               </td>
               <td width="35%">
-                Purchase Number: 0001PN<br />
+                Purchase Number:  <?php echo "PN-0000".$row2['purcase_id'].""?><br />
                 Purchase Date : <?php echo $datenow ?><br />
                 
               </td>
