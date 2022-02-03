@@ -50,7 +50,6 @@ if (isset($_POST['submit'])) {
 					<div class="col-lg-12">
 						<h1 class="page-header">POS
 							<span class="pull-right">
-						<a href="product.php">	<button class="btn btn-success btn-sm"style="width:120px;height:50px"> View Item</button></a>
 								<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addschedule" style="width:120px;height:50px"><i class="fa fa-search"></i> Search Item</button>
 							</span>
 						</h1>
